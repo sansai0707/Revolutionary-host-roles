@@ -17,11 +17,15 @@ namespace RevolutionaryHostRoles.Patches
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
         private static class VersionShowerPatch
         {
-            public static string Authors = "<color=#ffff00>Authors</color>";
-            public static string Developers = "<color=#0000ff>Developer</color>";
-            public static string Sansai = "<color=#9acd32>sansai</color>";
-            public static string Haron = "<color=#00fa9a>haron</color>";
-            public static string Oshurecat = "<color=#00ffff>Oshureca</color>";
+            public static string Authors = "<color=#ffff00>製作者</color>";
+            public static string Developers = "<color=#0000ff>開発者</color>";
+            public static string Sansai = "<color=#9acd32>山菜</color>";
+            public static string Haron = "<color=#00fa9a>はろん</color>";
+            public static string Oshurecat = "<color=#00ffff>しゅれ</color>";
+            public static string Juki = "じゅきまぐろ";
+            public static string Lemons = "れもんず";
+            public static string Syanpan = "シャンパン";
+            public static string Serori = "セロリ";
             static void Postfix(VersionShower __instance)
             {
 
@@ -39,7 +43,7 @@ namespace RevolutionaryHostRoles.Patches
 
                 var RHRName = UnityEngine.Object.Instantiate(credentials);
                 RHRName.transform.position = new Vector3(0, -0.2f, 0);
-                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Haron + "/" + Oshurecat + "</size>"));
+                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + "/" + Haron + "/" + Oshurecat + "/" + Juki + "/" + Lemons + "/" + Syanpan + "/" + Serori + "</size>"));
 
                 credentials.transform.SetParent(amongUsLogo.transform);
                 RHRName.transform.SetParent(amongUsLogo.transform);
