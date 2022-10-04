@@ -17,15 +17,15 @@ namespace RevolutionaryHostRoles.Patches
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
         private static class VersionShowerPatch
         {
-            public static string Authors = "<color=#ffff00>製作者</color>";
-            public static string Developers = "<color=#0000ff>開発者</color>";
-            public static string Sansai = "<color=#9acd32>山菜</color>";
-            public static string Haron = "<color=#00fa9a>はろん</color>";
-            public static string Oshurecat = "<color=#00ffff>しゅれ</color>";
-            public static string Juki = "じゅきまぐろ";
-            public static string Lemons = "れもんず";
-            public static string Syanpan = "シャンパン";
-            public static string Serori = "セロリ";
+            public static string Authors = "<color=#ffff00>Authors</color>";
+            public static string Developers = "<color=#0000ff>Developer</color>";
+            public static string Sansai = "<color=#9acd32>Sansai</color>";
+            public static string Haron = "<color=#00fa9a>haron</color>";
+            public static string Oshurecat = "<color=#00ffff>oshurecat</color>";
+            public static string Juki = "<color=#00bfff>JukiTuna</color>";
+            public static string Lemons = "<color=#ffff00>Lemons</color>";
+            public static string Syanpan = "<color=#0000ff>Syanpan</color>";
+            public static string Serori = "<color=#00ff00>Serori</color>";
             static void Postfix(VersionShower __instance)
             {
 
@@ -43,7 +43,7 @@ namespace RevolutionaryHostRoles.Patches
 
                 var RHRName = UnityEngine.Object.Instantiate(credentials);
                 RHRName.transform.position = new Vector3(0, -0.2f, 0);
-                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + "/" + Haron + "/" + Oshurecat + "/" + Juki + "/" + Lemons + "/" + Syanpan + "/" + Serori + "</size>"));
+                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + " " + Haron + " " + Oshurecat + " " + Juki + " " + Lemons + " " + Syanpan + " " + Serori + "</size>"));
 
                 credentials.transform.SetParent(amongUsLogo.transform);
                 RHRName.transform.SetParent(amongUsLogo.transform);
