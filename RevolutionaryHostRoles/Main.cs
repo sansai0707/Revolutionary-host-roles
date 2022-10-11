@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.IL2CPP;
 using HarmonyLib;
+using RevolutionaryHostRoles;
 
 namespace RevolutionaryHostRoles
 {
@@ -16,12 +17,14 @@ namespace RevolutionaryHostRoles
         public static RevolutionaryHostRolesPlugin Instance;
         public static System.Version Version = System.Version.Parse(VersionString);
         internal static BepInEx.Logging.ManualLogSource Logger;
-        public static int optionsPage = 1;
+        public static int optionsPage = 0;
+
         public override void Load()
         {
             Logger = Log;
             Instance = this;
             Harmony.PatchAll();
+            CustomOptionHolder.Load();
         }
     }
 }
