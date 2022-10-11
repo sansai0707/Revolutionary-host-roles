@@ -24,11 +24,6 @@ namespace RevolutionaryHostRoles.Patches
                 {
                     string name = "<size=75%>" + p.RoleName() + TaskText + "</size>\n" + p.PlayerName() + AddName;
                     p.RpcSetNamePrivate(name);//自分以外見えない
-                    /*foreach (PlayerControl Dead in DeadPlayers)
-                    {
-                        if (p.PlayerId != Dead.PlayerId) p.RpcSetNamePrivate(name, Dead);
-                    }//自分が死んでなかったら死んでる人にしかロール見えないように
-                */
                 }
             }
         }

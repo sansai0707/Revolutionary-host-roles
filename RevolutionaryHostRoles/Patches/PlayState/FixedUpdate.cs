@@ -4,7 +4,7 @@ using BepInEx.IL2CPP;
 using Epic.OnlineServices.TitleStorage;
 using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
-using RevolutionaryHostRoles.Roles;
+using RevolutionaryHostRoles;
 using UnityEngine;
 using static UnityEngine.UI.Button;
 using Object = UnityEngine.Object;
@@ -18,9 +18,6 @@ namespace RevolutionaryHostRoles.Patches
         public static void Postfix()
         {
             SetNamePatch.SetRoleName();
-            /*foreach (PlayerControl p in CachedPlayer.AllPlayers)
-            if (p.IsImpostor())
-                RoleDatas.Tricker.TrickerPlayer.Add(p);*/
         }
     }
 }

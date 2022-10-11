@@ -3,7 +3,9 @@ using BepInEx.Configuration;
 using BepInEx.IL2CPP;
 using HarmonyLib;
 using Hazel;
+using RevolutionaryHostRoles.Patches;
 using RevolutionaryHostRoles.Roles;
+using RevolutionaryHostRoles;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +14,8 @@ using System.Reflection;
 using UnhollowerBaseLib;
 using UnityEngine;
 using UnityEngine.Networking.Types;
+using Rewired.Libraries.SharpDX.RawInput;
+using System.Text.RegularExpressions;
 
 namespace RevolutionaryHostRoles
 {
@@ -63,20 +67,21 @@ namespace RevolutionaryHostRoles
             var indexdate = UnityEngine.Random.Range(0, list.Count);
             return list[indexdate];
         }
-        public static bool IsCrew(this PlayerControl p)
+
+        public static string cs(Color c, string s)
         {
-            return !p.Data.Role.IsImpostor;
+            return string.Format("<color=#{0:X2}{1:X2}{2:X2}{3:X2}>{4}</color>", ToByte(c.r), ToByte(c.g), ToByte(c.b), ToByte(c.a), s);
         }
-        public static bool IsImpostor(this PlayerControl p)
+
+        private static byte ToByte(float f)
         {
-            return p.Data.Role.IsImpostor;
+            f = Mathf.Clamp01(f);
+            return (byte)(f * 255);
         }
-        public static bool IsRole(this PlayerControl p, CustomRoleId role, bool IsChache = true)
-        {
-            CustomRoleId MyRole;
-            MyRole = p.GetRole();
-            return MyRole == role;
-        }
+    }
+    //ロールに関するやつ
+    public static class PlayerHelper
+    {
         public static bool IsAlive(this PlayerControl p)
         {
             return !p.Data.IsDead;
@@ -85,7 +90,20 @@ namespace RevolutionaryHostRoles
         {
             return p.Data.IsDead;
         }
-
+        public static bool IsCrew(this PlayerControl p)
+        {
+            return !p.Data.Role.IsImpostor;
+        }
+        public static bool IsImpostor(this PlayerControl p)
+        {
+            return p.Data.Role.IsImpostor;
+        }
+        public static bool IsRole(this PlayerControl p, CustomRoleId role)
+        {
+            CustomRoleId MyRole;
+            MyRole = p.GetRole();
+            return MyRole == role;
+        }
         public static CustomRoleId GetRole(this PlayerControl p)
         {
             if (RoleDatas.Tricker.TrickerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Tricker;
@@ -154,5 +172,24 @@ namespace RevolutionaryHostRoles
             AmongUsClient.Instance.FinishRpcImmediately(writer);
         }
         /*=====================ykundesuさんありがとうございます！！！=========================*/
+    }
+    public static class ModeHelper
+    {
+        /*
+        public static CustomPlusModeId GetMode()
+        {
+            if (CustomOptionHolder.InversionMode.GetBool())
+            {
+                return CustomPlusModeId.InversionMode;
+            }
+            else return CustomPlusModeId.No;
+        }
+        public static bool IsMode(CustomPlusModeId Mode)
+        {
+            CustomPlusModeId ThisMode;
+            ThisMode = GetMode();
+            return ThisMode == Mode;
+        }
+        */
     }
 }
