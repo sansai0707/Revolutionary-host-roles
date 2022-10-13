@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.BepInEx.Configration;
+using System.BepInEx.Configuration;
 using UnityEngine;
 
 namespace Revolutionaryhostroles
