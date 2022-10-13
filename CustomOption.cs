@@ -44,7 +44,7 @@ namespace Revolutionaryhostroles
             return this;
         }
 
-        public bool IsHidden(CustomGameMode gameMOde)
+        public bool IsHidden(CustomGameMode gamemode)
         {
             if (isHidden) return true;
 
@@ -70,7 +70,7 @@ namespace Revolutionaryhostroles
             Color color,
             string name,
             System.Object[] selections,
-            System.Object defaltValue,
+            System.Object defaultValue,
             CustomOption parent,
             bool isHeader,
             bool isHidden,
@@ -98,7 +98,7 @@ namespace Revolutionaryhostroles
             Selection = 0;
             if (id ==0)
             {
-                Entry = Main.Instance.Config.Bind($"Current Preset", id.ToString(), DefailtSelection);
+                Entry = Main.Instance.Config.Bind($"Current Preset", id.ToString(), DefaultSelection);
                 Preset = Selection = Mathf.Clamp(Entry.Value, 0, selections.Length - 1);
             }
             if (id > 0)
@@ -108,7 +108,7 @@ namespace Revolutionaryhostroles
             }
             if (Options.Any(x => x.Id ==id)) Logger.Warn($"ID{id}が重複してます", "CustomOption");
             Options.Add(this);
-            GameMOde = CustomGameMode.Standard;
+            GameMode = CustomGameMode.Standard;
         }
 
         public static CustomOption Create(int id,
@@ -313,6 +313,6 @@ namespace Revolutionaryhostroles
         CrewmateRoles,
         NeutralRoles,
         ImpostorRoles,
-        Modifiter
+        Modifier
     }
 }
