@@ -250,7 +250,7 @@ namespace Revolutionaryhostroles
         public string GetName(bool disableColor = false)
         {
             return disableColor
-                ? Translater.GetString(Name, ReplacementDictionary)
+                ? Translator.GetString(Name, ReplacementDictionary)
                 : Helpers.ColorString(color, Translator.GetString(Name, ReplacementDictionary));
         }
 
@@ -299,7 +299,7 @@ namespace Revolutionaryhostroles
                 stringOption.ValueText.text = Selections[Selection].ToString();
         }
 
-        public void SetParent(CustomOption newparent)
+        public void SetParent(CustomOption newParent)
         {
             Parent?.Children.Remove(this);
 
