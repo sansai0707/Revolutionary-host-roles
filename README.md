@@ -21,4 +21,5 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 ## 内容
 ### コマンド
+F9 解像度変更
 ### 役職
