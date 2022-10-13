@@ -175,7 +175,7 @@ namespace Revolutionaryhostroles
             preset = newPreset;
             foreach (var option in options)
             {
-                if (option.Id <= 0) cotinue;
+                if (option.Id <= 0) continue;
                 
                 if (AmongUsClient.Instance.AmHost)
                     option.Entry = Main.Instance.Config.Bind($"Preset{Preset}", option.Id.ToString(), option.DefaultSelection);
