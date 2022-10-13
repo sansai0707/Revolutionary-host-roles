@@ -44,7 +44,7 @@ namespace Revolutionaryhostroles
             return this;
         }
 
-        public bool IsHidden(CustomGameMode gamemode)
+        public bool IsHidden(CustomGameMode gameMode)
         {
             if (isHidden) return true;
 
@@ -175,7 +175,7 @@ namespace Revolutionaryhostroles
             preset = newPreset;
             foreach (var option in options)
             {
-                if (option.Id <= 0) coutinue;
+                if (option.Id <= 0) cotinue;
                 
                 if (AmongUsClient.Instance.AmHost)
                     option.Entry = Main.Instance.Config.Bind($"Preset{Preset}", option.Id.ToString(), option.DefaultSelection);
