@@ -53,6 +53,7 @@ namespace RevolutionaryHostRoles
                     __instance.RoleOptions.ImpostorsCanSeeProtect = true;
                     __instance.RoleOptions.EngineerCooldown = 10f;
                     __instance.RoleOptions.EngineerInVentMaxTime = 8f;
+
                     return false;
                 }
             }
@@ -61,6 +62,7 @@ namespace RevolutionaryHostRoles
                 var PlayerSpeedModOption = __instance.Children.FirstOrDefault(x => x.name == "PlayerSpeed").TryCast<NumberOption>();//上限解放
                 if (PlayerSpeedModOption != null) PlayerSpeedModOption.ValidRange = new FloatRange(-20f, 20f);
 
+                }
                 var killCoolOption = __instance.Children.FirstOrDefault(x => x.name == "KillCooldown").TryCast<NumberOption>();
                 if (killCoolOption != null) killCoolOption.ValidRange = new FloatRange(0.1f, 100f);
 
