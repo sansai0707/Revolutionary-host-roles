@@ -175,12 +175,16 @@ namespace RevolutionaryHostRoles
     }
     public static class ModeHelper
     {
-        /*
+        
         public static CustomPlusModeId GetMode()
         {
-            if (CustomOptionHolder.InversionMode.GetBool())
+            if (CustomOptionHolder.NotButton.GetBool())
             {
-                return CustomPlusModeId.InversionMode;
+                return CustomPlusModeId.NotButton;
+            }
+            if (CustomOptionHolder.NotReport.GetBool())
+            {
+                return CustomPlusModeId.NotReport;
             }
             else return CustomPlusModeId.No;
         }
@@ -190,6 +194,6 @@ namespace RevolutionaryHostRoles
             ThisMode = GetMode();
             return ThisMode == Mode;
         }
-        */
+        
     }
 }

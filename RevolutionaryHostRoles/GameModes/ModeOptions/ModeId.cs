@@ -1,5 +1,4 @@
-﻿/*
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.IL2CPP;
 using Epic.OnlineServices.TitleStorage;
@@ -13,7 +12,7 @@ namespace RevolutionaryHostRoles.Patches
     public enum CustomPlusModeId
     {
         No = 0,
-        InversionMode
+        NotReport,
+        NotButton
     }
 }
-*/

@@ -58,11 +58,11 @@ namespace RevolutionaryHostRoles
                 }
             }
             public static void Postfix(GameOptionsMenu __instance)
-            {
+            { 
                 var PlayerSpeedModOption = __instance.Children.FirstOrDefault(x => x.name == "PlayerSpeed").TryCast<NumberOption>();//上限解放
                 if (PlayerSpeedModOption != null) PlayerSpeedModOption.ValidRange = new FloatRange(-20f, 20f);
 
-                }
+                
                 var killCoolOption = __instance.Children.FirstOrDefault(x => x.name == "KillCooldown").TryCast<NumberOption>();
                 if (killCoolOption != null) killCoolOption.ValidRange = new FloatRange(0.1f, 100f);
 

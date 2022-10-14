@@ -19,7 +19,8 @@ namespace RevolutionaryHostRoles
 
         public static CustomOption presetSelection;
 
-        public static CustomOption InversionMode;
+        public static CustomOption NotReport; 
+        public static CustomOption NotButton;
 
         public static CustomOption crewmateRolesCountMax;
         public static CustomOption neutralRolesCountMax;
@@ -57,11 +58,12 @@ namespace RevolutionaryHostRoles
             presetSelection = CustomOption.Create(0, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "プリセット"), presets, null, true);
             //InversionMode = CustomOption.Create(7, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "操作反転モード"), false, null, true);
 
-            crewmateRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの数"), 15f, 0f, 15f, 1f, null, true);
-            neutralRolesCountMax = CustomOption.Create(4, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数"), 15f, 0f, 15f, 1f);
-            impostorRolesCountMax = CustomOption.Create(6, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの数"), 15f, 0f, 3f, 1f);
+            crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの数"), 15f, 0f, 15f, 1f, null, true);
+            neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数"), 15f, 0f, 15f, 1f);
+            impostorRolesCountMax = CustomOption.Create(3, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの数"), 15f, 0f, 3f, 1f);
 
-
+            NotButton = CustomOption.Create(4, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "ボタン使用不可モード"), false, null, true);
+            NotReport = CustomOption.Create(5, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "死体レポート不可モード"), false, null, true);
         }
     }
 }
