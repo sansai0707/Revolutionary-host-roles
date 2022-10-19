@@ -8,6 +8,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 また、このMODについてInnerslothに問い合わせるのはお控えください。
 
 ## リンク
+[discord](https://discord.gg/KC3G57CWeU)
 
 ## クレジット
 - [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければこのMODは作れてません(LoadSpriteFromResourcesやCustomOption、ToByteやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんありがとうございます！！！！
