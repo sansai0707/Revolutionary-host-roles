@@ -51,7 +51,7 @@ namespace RevolutionaryHostRoles.Patches
             }
         }
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
-        private static class leftTitle
+        public static class RightTitle
         {
             public static string RHRNAME = $"<size=130%><color=#32cd32>RevolutionaryHostRoles</color>v{RevolutionaryHostRolesPlugin.Version}</size>";
             static void Postfix(VersionShower __instance)

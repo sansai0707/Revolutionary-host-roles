@@ -26,8 +26,8 @@ namespace RevolutionaryHostRoles
         public static CustomOption neutralRolesCountMax;
         public static CustomOption impostorRolesCountMax;
 
-        public static CustomOption TrackerOption;
-        public static CustomOption TrackerPlayerCount;
+        public static CustomOption TrickerOption;
+        public static CustomOption TrickerPlayerCount;
 
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
@@ -48,15 +48,14 @@ namespace RevolutionaryHostRoles
 
             //役職
 
-            TrackerOption = CustomOption.Create(1000, Types.Impostor, cs(Color.red, "トラッカー"), rates, null, true);
-            TrackerPlayerCount = CustomOption.Create(1001, Types.Impostor, "人数", 1f, 1f, 3f, 1f, TrackerOption);
+            TrickerOption = CustomOption.Create(1000, Types.Impostor, cs(Color.red, "トリッカー"), rates, null, true);
+            TrickerPlayerCount = CustomOption.Create(1001, Types.Impostor, "人数", 1f, 1f, 3f, 1f, TrickerOption);
             //temple(Role) = CustomOption.Create(Id, Types.Impostor, cs(Color.red, "トラッカー"), rates, null, true);
             //temple(float) = CustomOption.Create(Id, Types.Impostor, "設定名", //デフォルトf, //最小の値f, //最大の値f, //刻む数字(語彙力)f, templeOption)
             //temple(bool) = CustomOption.Create(Id, Types.Crewmate, "設定名", false, templeOption);
 
             //プリセットと最小and最大人数
             presetSelection = CustomOption.Create(0, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "プリセット"), presets, null, true);
-            //InversionMode = CustomOption.Create(7, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "操作反転モード"), false, null, true);
 
             crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの数"), 15f, 0f, 15f, 1f, null, true);
             neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数"), 15f, 0f, 15f, 1f);

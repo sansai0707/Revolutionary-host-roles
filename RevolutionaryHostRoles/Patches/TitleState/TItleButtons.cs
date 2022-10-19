@@ -19,7 +19,7 @@ namespace RevolutionaryHostRoles.Patches
             GameObject button = GameObject.Find("HowToPlayButton").transform.FindChild("Text_TMP").gameObject;
             GameObject.Destroy(button.GetComponent<TextTranslatorTMP>());
             TMPro.TextMeshPro text = button.GetComponent<TMPro.TextMeshPro>();
-            text.text = "遊ぶ方";
+            text.text = "ぷれいほうほう";
             GameObject.Destroy(button.GetComponent<TextTranslatorTMP>());
         }
 

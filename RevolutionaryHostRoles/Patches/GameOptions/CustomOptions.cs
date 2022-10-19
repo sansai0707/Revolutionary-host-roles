@@ -43,7 +43,7 @@ namespace RevolutionaryHostRoles
         public CustomOption(int id, CustomOptionType type, string name, System.Object[] selections, System.Object defaultValue, CustomOption parent, bool isHeader)
         {
             this.id = id;
-            this.name = parent == null ? name : "- " + name;
+            this.name = parent == null ? name : "-- " + name;
             this.selections = selections;
             int index = Array.IndexOf(selections, defaultValue);
             this.defaultSelection = index >= 0 ? index : 0;
@@ -74,7 +74,7 @@ namespace RevolutionaryHostRoles
 
         public static CustomOption Create(int id, CustomOptionType type, string name, bool defaultValue, CustomOption parent = null, bool isHeader = false)
         {
-            return new CustomOption(id, type, name, new string[] { "Off", "On" }, defaultValue ? "On" : "Off", parent, isHeader);
+            return new CustomOption(id, type, name, new string[] { "<color=#ff0000>オフ</color>", "<color=#00ffff>オン</color>" }, defaultValue ? "オン" : "<color=#ff0000>オフ</color>", parent, isHeader);
         }
 
         // Static behaviour
