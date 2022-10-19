@@ -140,14 +140,24 @@ namespace RevolutionaryHostRoles
         }
         public static string RoleName(this PlayerControl p)
         {
-            if (RoleDatas.Tricker.TrickerPlayer.IsCheckListPlayerControl(p)) return "<color=#ff0000>トリッカー</color>";
+            if (!(AmongUsClient.Instance.GameState == AmongUsClient.GameStates.Started)) return "";
+                if (RoleDatas.Tricker.TrickerPlayer.IsCheckListPlayerControl(p)) return "<color=#ff0000>トリッカー</color>";
             else
             {
-                if (p.IsCrew())
-                    return "<color=#00ffff>クルーメイト</color>";
-                else if (p.IsImpostor())
-                    return "<color=#ff0000>インポスター</color>";
-                else return "例外きたあああああああああ";
+                switch (p.Data.RoleType)
+                {
+                    case RoleTypes.Crewmate:
+                        return "<color=#00FFFF>クルーメイト</color>";
+                    case RoleTypes.Engineer:
+                        return "<color=#1e90ff>エンジニア</color>";
+                    case RoleTypes.Scientist:
+                        return "<color=#7fff00>科学者</color>";
+                    case RoleTypes.Impostor:
+                        return "<color=#FF0000>インポスター</color>";
+                    case RoleTypes.Shapeshifter:
+                        return "<color=#FF0000>シェイプシフター</color>";
+                    default: return "<color=#ffff00>守護天使</color>";
+                }
             }
         }
 
@@ -172,6 +182,28 @@ namespace RevolutionaryHostRoles
             AmongUsClient.Instance.FinishRpcImmediately(writer);
         }
         /*=====================ykundesuさんありがとうございます！！！=========================*/
+        public static void RpcMurderPrivate(this PlayerControl TargetPlayer,PlayerControl SeePlayer = null)
+        {
+            if (TargetPlayer == null || !AmongUsClient.Instance.AmHost) return;
+            List<PlayerControl> AllPlayers = new();
+            foreach (PlayerControl p in CachedPlayer.AllPlayers)
+            {
+                if (p.PlayerId == TargetPlayer.PlayerId)
+                {
+
+                }
+                else
+                {
+                    AllPlayers.Add(p);
+                }
+            }
+            foreach (PlayerControl AllPlayer in AllPlayers)
+                if (SeePlayer == null) SeePlayer = AllPlayer;
+            var clientId = SeePlayer.GetClientId();
+            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(TargetPlayer.NetId, (byte)RpcCalls.MurderPlayer, SendOption.Reliable, clientId);
+            writer.Write(TargetPlayer);
+            AmongUsClient.Instance.FinishRpcImmediately(writer);
+        }
     }
     public static class ModeHelper
     {
