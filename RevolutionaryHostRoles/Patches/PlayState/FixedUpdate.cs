@@ -5,6 +5,7 @@ using Epic.OnlineServices.TitleStorage;
 using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
 using RevolutionaryHostRoles;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.UI.Button;
 using Object = UnityEngine.Object;
