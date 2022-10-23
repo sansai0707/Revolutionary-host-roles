@@ -27,5 +27,5 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 ### コマンド
 F9 解像度変更
 ### 役職
-#### トラッカー <br>
+#### トリッカー <br>
 シェイプした後のキルでは死体が出ません。
