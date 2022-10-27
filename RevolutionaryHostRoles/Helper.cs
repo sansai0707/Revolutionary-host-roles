@@ -78,6 +78,13 @@ namespace RevolutionaryHostRoles
             f = Mathf.Clamp01(f);
             return (byte)(f * 255);
         }
+        public static PlayerControl playerById(byte id)
+        {
+            foreach (PlayerControl player in CachedPlayer.AllPlayers)
+                if (player.PlayerId == id)
+                    return player;
+            return null;
+        }
     }
     //ロールに関するやつ
     public static class PlayerHelper

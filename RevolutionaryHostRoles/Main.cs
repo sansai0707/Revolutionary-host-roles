@@ -17,6 +17,7 @@ namespace RevolutionaryHostRoles
         public static RevolutionaryHostRolesPlugin Instance;
         public static System.Version Version = System.Version.Parse(VersionString);
         internal static BepInEx.Logging.ManualLogSource Logger;
+
         public static int optionsPage = 0;
 
         public override void Load()
