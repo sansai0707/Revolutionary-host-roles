@@ -19,9 +19,9 @@ namespace RevolutionaryHostRoles.Patches
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]//キルされるときのやつ
         class MurderPlayer
         {
-            public static void Postfix()
+            public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
             {
-                SetNamePatch.SetRoleName();
+
             }
         }
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]//タスク1個終わらした時
@@ -29,7 +29,7 @@ namespace RevolutionaryHostRoles.Patches
         {
             public static void Postfix(PlayerControl __instance)
             {
-                SetNamePatch.SetRoleName();
+
             }
         }
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckMurder))]//キルしようとした時
@@ -57,8 +57,8 @@ namespace RevolutionaryHostRoles.Patches
                             return true;
                         }
                 }
-                SetNamePatch.SetRoleName();
-                return true;
+                __instance.RpcMurderPrivate();
+                return false;
             }
         }
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Shapeshift))]//シェイプした時

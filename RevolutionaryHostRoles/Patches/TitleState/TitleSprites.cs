@@ -54,6 +54,7 @@ namespace RevolutionaryHostRoles.Patches
         public static class RightTitle
         {
             public static string RHRNAME = $"<size=130%><color=#32cd32>RevolutionaryHostRoles</color>v{RevolutionaryHostRolesPlugin.Version}</size>";
+            public static string RHRNAMEGame = $"<size=130%><color=#32cd32>RevolutionaryHostRoles</color></size>\nVersion :{RevolutionaryHostRolesPlugin.Version}";
             static void Postfix(VersionShower __instance)
             {
 

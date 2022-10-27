@@ -20,10 +20,15 @@ namespace RevolutionaryHostRoles.Patches
             string TaskText = "";
             foreach (PlayerControl p in CachedPlayer.AllPlayers)
             {
-                if (StartPatch.BeginStart.IsStart)
+                if (AmongUsClient.Instance.GameState == AmongUsClient.GameStates.Started)
                 {
-                    string name = "<size=75%>" + p.RoleName() + TaskText + "</size>\n" + p.PlayerName() + AddName;
-                    p.RpcSetNamePrivate(name);//自分以外見えない
+                    /*
+                    if ()
+                    {*/
+
+                        p.RpcSetNamePrivate("<size=75%>" + p.RoleName() + "</size>\n" + p.PlayerName());
+                    /*}
+                    */
                 }
             }
         }
