@@ -30,7 +30,7 @@ namespace RevolutionaryHostRoles.Patches
             PlayerControl SeePlayer = see;//見えるプレイヤー
             if (see == null) SeePlayer = player;//見えるプレイヤーいないなら自分だけ見える
             MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(player.NetId, (byte)RpcCalls.SendChat, SendOption.None, SeePlayer.GetClientId());
-            //SendOptionをReliableにすると部屋追放されるから変更しないでね！！(
+            //SendOptionをReliableにすると部屋追放されるから変更しないでね！！
             Writer.Write(Text);
             MessageExtensions.WriteNetObject(Writer, target);
             AmongUsClient.Instance.FinishRpcImmediately(Writer);
@@ -43,7 +43,7 @@ namespace RevolutionaryHostRoles.Patches
             {
                 if (AmongUsClient.Instance.AmHost)
                 {
-                    
+
                     __instance.myPlayer.SendChatPrivate(__instance.myPlayer, $"この部屋はMOD【Revolutionary Host Roles】\n通称【RHR】が実装されている部屋です。\n/mや/grなどの他のMODの\nコマンドは控えて下さい\n現在のホストは【{AmongUsClient.Instance.GetHost().PlayerName}】です。\n/cと送ることでコマンド一覧を確認出来ます。");
                 }
             }
@@ -65,10 +65,16 @@ namespace RevolutionaryHostRoles.Patches
                     SourcePlayer.SendChatPrivate(SourcePlayer, $"ホスト : {AmongUsClient.Instance.GetHost().PlayerName}");
                     return false;
                 }
+                else if (Commands[0].ToUpper().Contains("/gr", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/n", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/ar", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/l", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/ar", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/w", StringComparison.OrdinalIgnoreCase))
+                {
+                    SourcePlayer.SendChatPrivate(SourcePlayer, "他モッドのコマンドを送らないでください");
+                    return false;
+                }
                 else
                 {
                     return true;
                 }
+
 
             }
         }
