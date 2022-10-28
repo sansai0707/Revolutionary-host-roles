@@ -13,27 +13,25 @@ namespace RevolutionaryHostRoles.Patches
 {
     public static class RoleSelectPatch
     {
-        /*
         [HarmonyPatch(typeof(RoleManager), nameof(RoleManager.SelectRoles))]
         public class SelectRolesPatch
         {
 
             public static bool Prefix()
             {
-                RoleSelectHandler.Handler();
 
                 return true;
             }
 
         }
-        public static class RpcSetRoleImpostor
+        public static RoleTypes SetRoleImpostor(PlayerControl p)
         {
-            public static void SetRoleImpostor(PlayerControl p)
+            switch (p.GetRole())
             {
-
+                case CustomRoleId.Tricker:
+                    return RoleTypes.Shapeshifter;
+                default: return RoleTypes.Impostor;
             }
-
         }
-        */
     }
 }

@@ -2,6 +2,7 @@
 using BepInEx.IL2CPP;
 using HarmonyLib;
 using RevolutionaryHostRoles;
+using TheOtherRoles;
 
 namespace RevolutionaryHostRoles
 {
@@ -22,6 +23,7 @@ namespace RevolutionaryHostRoles
 
         public override void Load()
         {
+            RoleInfo.Load();
             Logger = Log;
             Instance = this;
             Harmony.PatchAll();

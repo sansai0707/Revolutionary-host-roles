@@ -24,8 +24,11 @@ namespace RevolutionaryHostRoles
         public static CustomOption NotReport; 
         public static CustomOption NotButton;
 
+        public static CustomOption impostorRolesCountMin;
         public static CustomOption crewmateRolesCountMax;
+        public static CustomOption crewmateRolesCountMin;
         public static CustomOption neutralRolesCountMax;
+        public static CustomOption neutralRolesCountMin;
         public static CustomOption impostorRolesCountMax;
 
         public static CustomOption TrickerOption;
@@ -59,12 +62,17 @@ namespace RevolutionaryHostRoles
             //プリセットと最小and最大人数
             presetSelection = CustomOption.Create(0, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "プリセット"), presets, null, true);
 
-            crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの数"), 15f, 0f, 15f, 1f, null, true);
-            neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数"), 15f, 0f, 15f, 1f);
-            impostorRolesCountMax = CustomOption.Create(3, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの数"), 15f, 0f, 3f, 1f);
 
-            NotAdmin = CustomOption.Create(4, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "アドミン使用不可モード"), false, null, true);
-            NotVital = CustomOption.Create(5, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "バイタル使用制限モード"), false, null, true);
+            // Using new id's for the options to not break compatibilty with older versions
+
+            crewmateRolesCountMin = CustomOption.Create(300, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最小人数"), 15f, 0f, 15f, 1f, null, true);
+            crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最大人数"), 15f, 0f, 15f, 1f);
+
+            neutralRolesCountMin = CustomOption.Create(302, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の最小人数"), 15f, 0f, 15f, 1f);
+            neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の最大人数"), 15f, 0f, 15f, 1f);
+            impostorRolesCountMin = CustomOption.Create(304, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの最小人数"), 15f, 0f, 3f, 1f);
+            impostorRolesCountMax = CustomOption.Create(3, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの最大人数"), 15f, 0f, 3f, 1f);
+
             NotButton = CustomOption.Create(6, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "ボタン使用不可モード"), false, null, true);
             NotReport = CustomOption.Create(7, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "死体レポート不可モード"), false, null, true);
         }
