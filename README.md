@@ -13,7 +13,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 ## クレジット
 - [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければこのMODは作れてません(LoadSpriteFromResourcesやCustomOption、ToByteやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんありがとうございます！！！！
 
-- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivateやそれ以上のソースコード)- [ykundesu](https://github.com/ykundesu)さんありがとうございます！
+- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivateやコマンドシステムやそれ以上のソースコード)- [ykundesu](https://github.com/ykundesu)さんありがとうございます！
 
 ## 開発者
 - [山菜](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
