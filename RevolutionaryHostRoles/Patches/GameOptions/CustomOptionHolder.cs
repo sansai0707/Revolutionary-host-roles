@@ -19,6 +19,8 @@ namespace RevolutionaryHostRoles
 
         public static CustomOption presetSelection;
 
+        public static CustomOption NotVital;
+        public static CustomOption NotAdmin;
         public static CustomOption NotReport; 
         public static CustomOption NotButton;
 
@@ -61,8 +63,10 @@ namespace RevolutionaryHostRoles
             neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数"), 15f, 0f, 15f, 1f);
             impostorRolesCountMax = CustomOption.Create(3, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの数"), 15f, 0f, 3f, 1f);
 
-            NotButton = CustomOption.Create(4, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "ボタン使用不可モード"), false, null, true);
-            NotReport = CustomOption.Create(5, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "死体レポート不可モード"), false, null, true);
+            NotAdmin = CustomOption.Create(4, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "アドミン使用不可モード"), false, null, true);
+            NotVital = CustomOption.Create(5, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "バイタル使用制限モード"), false, null, true);
+            NotButton = CustomOption.Create(6, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "ボタン使用不可モード"), false, null, true);
+            NotReport = CustomOption.Create(7, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "死体レポート不可モード"), false, null, true);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace RevolutionaryHostRoles.Patches
             public static string Juki = "<color=#00bfff>JukiTuna</color>";
             public static string Lemons = "<color=#ffff00>Lemons</color>";
             public static string Syanpan = "<color=#0000ff>Syanpan</color>";
-            public static string Serori = "<color=#00ff00>Serori</color>";
+            public static string Serori = "<color=#00ff00>誰だよ</color>";
             static void Postfix(VersionShower __instance)
             {
 
@@ -43,7 +43,7 @@ namespace RevolutionaryHostRoles.Patches
 
                 var RHRName = UnityEngine.Object.Instantiate(credentials);
                 RHRName.transform.position = new Vector3(0, -0.2f, 0);
-                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + " " + Haron + " " + Oshurecat + " " + Juki + " " + Lemons + " " + Syanpan + " " + Serori + "</size>"));
+                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + " " + Haron + " " + Oshurecat + " " + Juki + " " + Lemons + " " + Syanpan + " "　+  "</size>"));
 
                 credentials.transform.SetParent(amongUsLogo.transform);
                 RHRName.transform.SetParent(amongUsLogo.transform);
@@ -54,6 +54,7 @@ namespace RevolutionaryHostRoles.Patches
         public static class RightTitle
         {
             public static string RHRNAME = $"<size=130%><color=#32cd32>RevolutionaryHostRoles</color>v{RevolutionaryHostRolesPlugin.Version}</size>";
+            public static string RHRNAMEGame = $"<size=130%><color=#32cd32>RevolutionaryHostRoles</color></size>\nVersion :{RevolutionaryHostRolesPlugin.Version}";
             static void Postfix(VersionShower __instance)
             {
 

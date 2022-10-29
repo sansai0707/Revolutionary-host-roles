@@ -20,7 +20,7 @@ namespace RevolutionaryHostRoles.Patches
             {
                 string CustomText = "";
                 __instance.text.alignment = TextAlignmentOptions.TopRight;
-                __instance.text.text = $"{TitlePatch.RightTitle.RHRNAME}\n<size=130%>{ __instance.text.text}</size>\n<size=130%>{CustomText}</size>";
+                __instance.text.text = $"{TitlePatch.RightTitle.RHRNAMEGame}\n<size=100%>{ __instance.text.text}</size>\n<size=130%>{CustomText}</size>";
 
                 /*
                     var amongUsLogo = GameObject.Find("bannerLogo_AmongUs");
