@@ -7,6 +7,7 @@ using UnityEngine.Networking.Types;
 using static UnityEngine.ParticleSystem.PlaybackState;
 using Types = RevolutionaryHostRoles.CustomOption.CustomOptionType;
 using System.Diagnostics;
+using RevolutionaryHostRoles.Roles;
 
 namespace RevolutionaryHostRoles
 {
@@ -24,12 +25,17 @@ namespace RevolutionaryHostRoles
         public static CustomOption NotReport; 
         public static CustomOption NotButton;
 
+        public static CustomOption impostorRolesCountMin;
         public static CustomOption crewmateRolesCountMax;
+        public static CustomOption crewmateRolesCountMin;
         public static CustomOption neutralRolesCountMax;
+        public static CustomOption neutralRolesCountMin;
         public static CustomOption impostorRolesCountMax;
 
         public static CustomOption TrickerOption;
-        public static CustomOption TrickerPlayerCount;
+
+        public static CustomOption BaitOption;
+        public static CustomOption BaitReportTime;
 
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
@@ -51,7 +57,8 @@ namespace RevolutionaryHostRoles
             //役職
 
             TrickerOption = CustomOption.Create(1000, Types.Impostor, cs(Color.red, "トリッカー"), rates, null, true);
-            TrickerPlayerCount = CustomOption.Create(1001, Types.Impostor, "人数", 1f, 1f, 3f, 1f, TrickerOption);
+            BaitOption = CustomOption.Create(1001, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);
+            BaitReportTime = CustomOption.Create(1002, Types.Crewmate, "通報までの時間", 3f, 0f, 10f, 1f, BaitOption);
             //temple(Role) = CustomOption.Create(Id, Types.Impostor, cs(Color.red, "トラッカー"), rates, null, true);
             //temple(float) = CustomOption.Create(Id, Types.Impostor, "設定名", //デフォルトf, //最小の値f, //最大の値f, //刻む数字(語彙力)f, templeOption)
             //temple(bool) = CustomOption.Create(Id, Types.Crewmate, "設定名", false, templeOption);
@@ -59,12 +66,17 @@ namespace RevolutionaryHostRoles
             //プリセットと最小and最大人数
             presetSelection = CustomOption.Create(0, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "プリセット"), presets, null, true);
 
-            crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの数"), 15f, 0f, 15f, 1f, null, true);
-            neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数"), 15f, 0f, 15f, 1f);
-            impostorRolesCountMax = CustomOption.Create(3, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの数"), 15f, 0f, 3f, 1f);
 
-            NotAdmin = CustomOption.Create(4, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "アドミン使用不可モード"), false, null, true);
-            NotVital = CustomOption.Create(5, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "バイタル使用制限モード"), false, null, true);
+            // Using new id's for the options to not break compatibilty with older versions
+
+            crewmateRolesCountMin = CustomOption.Create(300, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最小人数"), 15f, 0f, 15f, 1f, null, true);
+            crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最大人数"), 15f, 0f, 15f, 1f);
+
+            neutralRolesCountMin = CustomOption.Create(302, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の最小人数"), 15f, 0f, 15f, 1f);
+            neutralRolesCountMax = CustomOption.Create(2, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の最大人数"), 15f, 0f, 15f, 1f);
+            impostorRolesCountMin = CustomOption.Create(304, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの最小人数"), 15f, 0f, 3f, 1f);
+            impostorRolesCountMax = CustomOption.Create(3, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの最大人数"), 15f, 0f, 3f, 1f);
+
             NotButton = CustomOption.Create(6, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "ボタン使用不可モード"), false, null, true);
             NotReport = CustomOption.Create(7, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "死体レポート不可モード"), false, null, true);
         }

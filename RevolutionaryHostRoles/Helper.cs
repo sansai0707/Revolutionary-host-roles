@@ -114,6 +114,7 @@ namespace RevolutionaryHostRoles
         public static CustomRoleId GetRole(this PlayerControl p)
         {
             if (RoleDatas.Tricker.TrickerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Tricker;
+            if (RoleDatas.Bait.BaitPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Bait;
             else return CustomRoleId.NormalRoles;
         }
         public static bool IsCheckListPlayerControl(this List<PlayerControl> ListDate, PlayerControl CheckPlayer)
@@ -147,24 +148,27 @@ namespace RevolutionaryHostRoles
         }
         public static string RoleName(this PlayerControl p)
         {
-            if (!(AmongUsClient.Instance.GameState == AmongUsClient.GameStates.Started)) return "";
-                if (RoleDatas.Tricker.TrickerPlayer.IsCheckListPlayerControl(p)) return "<color=#ff0000>トリッカー</color>";
-            else
+            switch (p.GetRole())
             {
-                switch (p.Data.RoleType)
-                {
-                    case RoleTypes.Crewmate:
-                        return "<color=#00FFFF>クルーメイト</color>";
-                    case RoleTypes.Engineer:
-                        return "<color=#1e90ff>エンジニア</color>";
-                    case RoleTypes.Scientist:
-                        return "<color=#7fff00>科学者</color>";
-                    case RoleTypes.Impostor:
-                        return "<color=#FF0000>インポスター</color>";
-                    case RoleTypes.Shapeshifter:
-                        return "<color=#FF0000>シェイプシフター</color>";
-                    default: return "<color=#ffff00>守護天使</color>";
-                }
+                case CustomRoleId.Tricker:
+                    return "<color=#ff0000>トリッカー</color>";
+                case CustomRoleId.Bait:
+                    return "<color=yellow>ベイト</color>";
+                default:
+                    switch (p.Data.RoleType)
+                    {
+                        case RoleTypes.Crewmate:
+                            return "<color=#00FFFF>クルーメイト</color>";
+                        case RoleTypes.Engineer:
+                            return "<color=#1e90ff>エンジニア</color>";
+                        case RoleTypes.Scientist:
+                            return "<color=#7fff00>科学者</color>";
+                        case RoleTypes.Impostor:
+                            return "<color=#FF0000>インポスター</color>";
+                        case RoleTypes.Shapeshifter:
+                            return "<color=#FF0000>シェイプシフター</color>";
+                        default: return "<color=#ffff00>守護天使</color>";
+                    }
             }
         }
 

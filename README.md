@@ -11,9 +11,11 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 [discord](https://discord.gg/KC3G57CWeU)
 
 ## クレジット
-- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければこのMODは作れてません(LoadSpriteFromResourcesやCustomOption、ToByteやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんありがとうございます！！！！
+- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければこのMODは作れてません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他の開発者さんありがとうございます！！！！
 
-- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivateやそれ以上のソースコード)- [ykundesu](https://github.com/ykundesu)さんありがとうございます！
+- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivateやそれ以上のソースコード)- [ykundesu](https://github.com/ykundesu)さんや、その他のSNRの開発者さんありがとうございます！
+
+- [TownOfHost](https://github.com/tukasa0001/TownOfHost) LateTaskやCustomRpcSenderをお借りしていました！！！[takusa0001](https://github.com/tukasa0001)さんや、TOHの開発者さんさんありがとうございます！
 
 ## 開発者
 - [山菜](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
@@ -26,5 +28,15 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 ### コマンド
 F9 解像度変更
 ### 役職
-#### トリッカー <br>
+####クルーメイト
+#####　ベイト <br>
+ベイトがキルされてからn秒後にベイトをキルした人にベイト自身の死体を通報させます。
+置き換え役職 : クルー
+######設定項目
+キルされてから通報されるまでの時間
+####インポスター
+##### トリッカー <br>
 シェイプした後のキルでは死体が出ません。
+置き換え役職 : シェイプシフター
+######設定項目
+なし
