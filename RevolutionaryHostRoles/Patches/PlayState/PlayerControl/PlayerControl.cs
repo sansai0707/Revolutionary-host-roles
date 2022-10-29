@@ -21,7 +21,8 @@ namespace RevolutionaryHostRoles.Patches
         {
             public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
             {
-
+                if (target.IsRole(CustomRoleId.Bait))
+                new LateTask(() => { __instance.CmdReportDeadBody(target.Data); } , CustomOptionHolder.BaitReportTime.GetFloat(), "BaitKill");
             }
         }
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]//タスク1個終わらした時
@@ -57,8 +58,7 @@ namespace RevolutionaryHostRoles.Patches
                             return true;
                         }
                 }
-                __instance.RpcMurderPrivate();
-                return false;
+                return true;
             }
         }
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Shapeshift))]//シェイプした時

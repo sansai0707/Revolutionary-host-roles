@@ -13,16 +13,15 @@ namespace RevolutionaryHostRoles.Patches
     {
         private static int crewValues;
         private static int impValues;
-        private static bool isEvilGuesser;
         private static List<Tuple<byte, byte>> playerRoleMap = new List<Tuple<byte, byte>>();
         public static void Postfix()
         {
             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.ResetVariables, Hazel.SendOption.Reliable, -1);
             AmongUsClient.Instance.FinishRpcImmediately(writer);
             RPCProcedure.resetVariables();
-                assignRoles();
+            assignRoles();
         }
-        private static void assignRoles()
+        public static void assignRoles()
         {
             var data = getRoleAssignmentData();
             selectFactionForFactionIndependentRoles(data);
@@ -72,7 +71,7 @@ namespace RevolutionaryHostRoles.Patches
             //neutralSettings.Add((byte)RoleId.Jester, CustomOptionHolder.jesterSpawnRate.GetSelection());
 
             //来るー
-          //  crewSettings.Add((byte)CustomRoleId., CustomOptionHolder.mayorSpawnRate.GetSelection());
+            crewSettings.Add((byte)CustomRoleId.Bait, CustomOptionHolder.BaitOption.GetSelection());
 
             return new RoleAssignmentData
             {

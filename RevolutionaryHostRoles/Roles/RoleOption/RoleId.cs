@@ -12,6 +12,7 @@ namespace RevolutionaryHostRoles
     public enum CustomRoleId
     {
         NormalRoles,
-        Tricker
+        Tricker,
+        Bait
     }
 }

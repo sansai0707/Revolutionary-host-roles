@@ -63,6 +63,9 @@ namespace RevolutionaryHostRoles
                         case CustomRoleId.Tricker:
                             Tricker.TrickerPlayer.Add(player);
                             break;
+                        case CustomRoleId.Bait:
+                            Bait.BaitPlayer.Add(player);
+                            break;
                     }
                 }
         }

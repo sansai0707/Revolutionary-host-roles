@@ -7,6 +7,7 @@ using UnityEngine.Networking.Types;
 using static UnityEngine.ParticleSystem.PlaybackState;
 using Types = RevolutionaryHostRoles.CustomOption.CustomOptionType;
 using System.Diagnostics;
+using RevolutionaryHostRoles.Roles;
 
 namespace RevolutionaryHostRoles
 {
@@ -32,7 +33,9 @@ namespace RevolutionaryHostRoles
         public static CustomOption impostorRolesCountMax;
 
         public static CustomOption TrickerOption;
-        public static CustomOption TrickerPlayerCount;
+
+        public static CustomOption BaitOption;
+        public static CustomOption BaitReportTime;
 
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
@@ -54,7 +57,8 @@ namespace RevolutionaryHostRoles
             //役職
 
             TrickerOption = CustomOption.Create(1000, Types.Impostor, cs(Color.red, "トリッカー"), rates, null, true);
-            TrickerPlayerCount = CustomOption.Create(1001, Types.Impostor, "人数", 1f, 1f, 3f, 1f, TrickerOption);
+            BaitOption = CustomOption.Create(1001, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);
+            BaitReportTime = CustomOption.Create(1002, Types.Crewmate, "通報までの時間", 3f, 0f, 10f, 1f, BaitOption);
             //temple(Role) = CustomOption.Create(Id, Types.Impostor, cs(Color.red, "トラッカー"), rates, null, true);
             //temple(float) = CustomOption.Create(Id, Types.Impostor, "設定名", //デフォルトf, //最小の値f, //最大の値f, //刻む数字(語彙力)f, templeOption)
             //temple(bool) = CustomOption.Create(Id, Types.Crewmate, "設定名", false, templeOption);

@@ -18,15 +18,6 @@ namespace RevolutionaryHostRoles.Patches
                 if (resolutionIndex >= resolutions.Length) resolutionIndex = 0;
                 ResolutionManager.SetResolution(resolutions[resolutionIndex].Item1, resolutions[resolutionIndex].Item2, false);
             }
-            if (Input.GetKeyDown(KeyCode.F4))
-            {
-                if (!AmongUsClient.Instance.AmHost) return;
-                if (StartPatch.BeginStart.IsStart)
-                {
-                    if (PlayerControl.LocalPlayer.IsImpostor())
-                        RoleDatas.Tricker.TrickerPlayer.Add(PlayerControl.LocalPlayer);
-                }
-            }
             if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (!AmongUsClient.Instance.AmHost) return;
