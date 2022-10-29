@@ -5,7 +5,7 @@ using InnerNet;
 using RevolutionaryHostRoles;
 using UnhollowerBaseLib;
 
-namespace TownOfHost
+namespace RevolutionaryHostRoles
 {
     public class CustomRpcSender
     {

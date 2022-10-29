@@ -8,7 +8,6 @@ using MonoMod.Cil;
 using RevolutionaryHostRoles.Roles;
 using Rewired.Demos;
 using System.Collections.Generic;
-using TownOfHost;
 using UnityEngine;
 using static UnityEngine.UI.Button;
 using Object = UnityEngine.Object;

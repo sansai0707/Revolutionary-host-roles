@@ -7,7 +7,7 @@ namespace RevolutionaryHostRoles
 {
    /* [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]*///なんかBeplnExのテンプレダウンロードした時についてきたやつ
     [BepInPlugin(Id, "RevolutionaryHostRoles", VersionString)]
-    [BepInProcess("Among Us.exe")]
+
     public class RevolutionaryHostRolesPlugin : BasePlugin
     {
         public const string Id = "jp.sansai0707.RevolutionaryHostRoles";
