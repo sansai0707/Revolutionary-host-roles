@@ -22,8 +22,8 @@ namespace RevolutionaryHostRoles.Patches
             public static string Sansai = "<color=#9acd32>Sansai</color>";
             public static string Haron = "<color=#00fa9a>haron</color>";
             public static string Oshurecat = "<color=#00ffff>oshurecat</color>";
-            public static string Juki = "<color=#00bfff>JukiTuna</color>";
-            public static string Lemons = "<color=#ffff00>Lemons</color>";
+            public static string Juki = "<color=#00bfff>Jukimagurosan</color>";
+            public static string Remons = "<color=#ffff00>Remons</color>";
             public static string Syanpan = "<color=#0000ff>Syanpan</color>";
             public static string Serori = "<color=#00ff00>誰だよ</color>";
             static void Postfix(VersionShower __instance)
@@ -43,7 +43,7 @@ namespace RevolutionaryHostRoles.Patches
 
                 var RHRName = UnityEngine.Object.Instantiate(credentials);
                 RHRName.transform.position = new Vector3(0, -0.2f, 0);
-                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + " " + Haron + " " + Oshurecat + " " + Juki + " " + Lemons + " " + Syanpan + " "　+  "</size>"));
+                RHRName.SetText(string.Format("<size=125%>" + Authors + " : " + Sansai + "\n" + Developers + " : " + Sansai + " " + Haron + " " + Oshurecat + " "  + " " + Remons + " " + Syanpan + " "　+  "</size>"));
 
                 credentials.transform.SetParent(amongUsLogo.transform);
                 RHRName.transform.SetParent(amongUsLogo.transform);
@@ -89,6 +89,16 @@ namespace RevolutionaryHostRoles.Patches
             {
 
                 var AmongUsLogo = GameObject.Find("bannerLogo_AmongUs");//ロゴ検出
+                AmongUsLogo.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+                AmongUsLogo.transform.position = new Vector3(0f, 2.5f, -0.1f);
+                var TitleLogo = new GameObject("RHRLogo");
+                TitleLogo.transform.position = new Vector3(0f, 0.75f, 0f);
+                var renderer = TitleLogo.AddComponent<SpriteRenderer>();
+                renderer.sprite = Helpers.LoadSpriteFromResources("RevolutionaryHostRoles.Resources.RHR rogo.png", 110f);
+                DestroyableSingleton<ModManager>.Instance.ShowModStamp();
+                /*
+                 //前のロゴアイコン
+                var AmongUsLogo = GameObject.Find("bannerLogo_AmongUs");//ロゴ検出
                 AmongUsLogo.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
                 AmongUsLogo.transform.position = new Vector3(0f, 2.5f, -0.1f);
                 var TitleLogo = new GameObject("RHRLogo");
@@ -96,6 +106,7 @@ namespace RevolutionaryHostRoles.Patches
                 var renderer = TitleLogo.AddComponent<SpriteRenderer>();
                 renderer.sprite = Helpers.LoadSpriteFromResources("RevolutionaryHostRoles.Resources.RHRTitleLogo.png", 210f);
                 DestroyableSingleton<ModManager>.Instance.ShowModStamp();
+                 */
             }
 
         }
