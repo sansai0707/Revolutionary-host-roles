@@ -1,16 +1,9 @@
-﻿using AssemblyUnhollower.Extensions;
-using BepInEx;
-using BepInEx.Configuration;
-using BepInEx.IL2CPP;
-using Epic.OnlineServices.TitleStorage;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Hazel;
 using InnerNet;
+using Rewired;
 using System;
-using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.UI.Button;
-using Object = UnityEngine.Object;
+using UnityEngine.AddressableAssets.ResourceLocators;
 
 namespace RevolutionaryHostRoles.Patches
 {
@@ -35,6 +28,29 @@ namespace RevolutionaryHostRoles.Patches
             MessageExtensions.WriteNetObject(Writer, target);
             AmongUsClient.Instance.FinishRpcImmediately(Writer);
         }
+        public static void RpcSetNames(this PlayerControl player, string Text, PlayerControl see = null)//特定の人の名前を一定時間変える
+        {
+            string PlayerName = player.Data.PlayerName;
+            //player = 送るプレイヤー
+            //target = 送られるプレイヤー
+            PlayerControl SeePlayer = see;//見えるプレイヤー
+            if (see == null) SeePlayer = player;//見えるプレイヤーいないなら自分だけ見える
+            MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(player.NetId, (byte)RpcCalls.SetName, SendOption.None, SeePlayer.GetClientId());
+            //SendOptionをReliableにすると部屋追放されるから変更しないでね！！
+            Writer.Write(Text);
+            AmongUsClient.Instance.FinishRpcImmediately(Writer);
+
+            new LateTask(() => 
+            {
+                PlayerControl SeePlayer = see;//見えるプレイヤー
+                if (see == null) SeePlayer = player;//見えるプレイヤーいないなら自分だけ見える
+                MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(player.NetId, (byte)RpcCalls.SetName, SendOption.None, SeePlayer.GetClientId());
+                //SendOptionをReliableにすると部屋追放されるから変更しないでね！！
+                Writer.Write(PlayerName);
+                AmongUsClient.Instance.FinishRpcImmediately(Writer);
+            }, 0.05f, "ResetName");
+        }
+
 
         [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.CoSpawnPlayer))]
         public class CoSpawnPlayerPatch
@@ -57,12 +73,31 @@ namespace RevolutionaryHostRoles.Patches
                 //switchの書き方わかんねぇ！！()
                 if (Commands[0].Equals("/c", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/C", StringComparison.OrdinalIgnoreCase))//送られたメッセージ
                 {
-                    SourcePlayer.SendChatPrivate(SourcePlayer, $"コマンド一覧\n/c : コマンド一覧を記載します。\n/h : ホストの名前を記載します\n/m : 自分の役職の設定を記載します");
+                    SourcePlayer.SendChatPrivate(SourcePlayer, $"コマンド一覧\n/c : コマンド一覧を記載します。\n/h : ホストの名前を記載します\n/Roles : 現在入っている役職を記載します\n/RolesS : 現在入っている役職の設定を記載します\n/Settings : 現在のRHRの設定を記載します");
                     return false;
                 }
                 else if (Commands[0].Equals("/h", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/H", StringComparison.OrdinalIgnoreCase))
                 {
                     SourcePlayer.SendChatPrivate(SourcePlayer, $"ホスト : {AmongUsClient.Instance.GetHost().PlayerName}");
+                    return false;
+                }
+                else if (Commands[0].Equals("/Roles", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/roles", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames( $"入っている役職一覧\n{GameOptionsDataPatch.buildRoleOptions()}");
+                    
+                   SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                        return false;
+                }
+                else if (Commands[0].Equals("/RolesS", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/roleS", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames( $"入っている役職の設定一覧\n{GameOptionsDataPatch.buildRoleSettings()}");
+                    SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                    return false;
+                }
+                else if (Commands[0].Equals("/Settings", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/settings", StringComparison.OrdinalIgnoreCase))
+                {
+                    SourcePlayer.RpcSetNames($"RHRの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.General, false)}");
+                    if (SourcePlayer.AmOwner) SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                     return false;
                 }
                 else if (Commands[0].ToUpper().Contains("/gr", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/n", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/ar", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/l", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/ar", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/w", StringComparison.OrdinalIgnoreCase))

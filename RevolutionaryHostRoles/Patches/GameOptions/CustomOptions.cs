@@ -95,7 +95,7 @@ namespace RevolutionaryHostRoles
                 }
             }
         }
-        /*
+        
         public static void ShareOptionSelections()
         {
             if (CachedPlayer.AllPlayers.Count <= 1 || AmongUsClient.Instance!.AmHost == false && CachedPlayer.LocalPlayer.PlayerControl == null) return;
@@ -116,7 +116,7 @@ namespace RevolutionaryHostRoles
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
             }
         }
-        */
+        
 
         // Getter
 
@@ -161,7 +161,7 @@ namespace RevolutionaryHostRoles
                     if (id == 0) switchPreset(selection); // Switch presets
                     else if (entry != null) entry.Value = selection; // Save selection to config
 
-                    //ShareOptionSelections();// Share all selections
+                    ShareOptionSelections();// Share all selections
                 }
             }
         }
@@ -352,14 +352,6 @@ namespace RevolutionaryHostRoles
 
             // Adapt task count for main options
 
-            var commonTasksOption = __instance.Children.FirstOrDefault(x => x.name == "NumCommonTasks").TryCast<NumberOption>();
-            if (commonTasksOption != null) commonTasksOption.ValidRange = new FloatRange(0f, 4f);
-
-            var shortTasksOption = __instance.Children.FirstOrDefault(x => x.name == "NumShortTasks").TryCast<NumberOption>();
-            if (shortTasksOption != null) shortTasksOption.ValidRange = new FloatRange(0f, 23f);
-
-            var longTasksOption = __instance.Children.FirstOrDefault(x => x.name == "NumLongTasks").TryCast<NumberOption>();
-            if (longTasksOption != null) longTasksOption.ValidRange = new FloatRange(0f, 15f);
         }
     }
 
@@ -409,7 +401,7 @@ namespace RevolutionaryHostRoles
     {
         public static void Postfix()
         {
-            //CustomOption.ShareOptionSelections();
+            CustomOption.ShareOptionSelections();
         }
     }
 
@@ -469,15 +461,22 @@ namespace RevolutionaryHostRoles
             return typeof(GameOptionsData).GetMethods().Where(x => x.ReturnType == typeof(string) && x.GetParameters().Length == 1 && x.GetParameters()[0].ParameterType == typeof(int));
         }
 
-        private static string buildRoleOptions()
+        public static string buildRoleOptions()
         {
+            var crewRoles = buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, true) + "\n";
             var impRoles = buildOptionsOfType(CustomOption.CustomOptionType.Impostor, true) + "\n";
-            var neutralRoles = buildOptionsOfType(CustomOption.CustomOptionType.Neutral, true) + "\n";
-            var crewRoles = buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, true);
-            return impRoles + neutralRoles + crewRoles;
+            var neutralRoles = buildOptionsOfType(CustomOption.CustomOptionType.Neutral, true);
+            return crewRoles　+ impRoles + neutralRoles;
+        }
+        public static string buildRoleSettings()
+        {
+            var crewRoles = buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false) + "\n";
+            var impRoles = buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false) + "\n";
+            var neutralRoles = buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false);
+            return crewRoles + impRoles + neutralRoles;
         }
 
-        private static string buildOptionsOfType(CustomOption.CustomOptionType type, bool headerOnly)
+        public static string buildOptionsOfType(CustomOption.CustomOptionType type, bool headerOnly)
         {
             StringBuilder sb = new StringBuilder("\n");
             var options = CustomOption.options.Where(o => o.type == type);
@@ -499,7 +498,7 @@ namespace RevolutionaryHostRoles
 
                     Color c = isIrrelevant ? Color.grey : Color.white;  // No use for now
                     if (isIrrelevant) continue;
-                    sb.AppendLine(Helpers.cs(c, $"{option.name}: {option.selections[option.selection].ToString()}"));
+                    sb.AppendLine(/*Helpers.cs(*c, */$"{option.name}: {option.selections[option.selection].ToString()}"/*)*/);
                 }
                 else
                 {

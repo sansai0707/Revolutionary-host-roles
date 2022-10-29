@@ -2,7 +2,6 @@
 using BepInEx.IL2CPP;
 using HarmonyLib;
 using RevolutionaryHostRoles;
-using TheOtherRoles;
 
 namespace RevolutionaryHostRoles
 {
