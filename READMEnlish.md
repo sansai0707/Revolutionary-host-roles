@@ -69,7 +69,7 @@ Role based : Shapeshifter
 ### Setting items
 KillCooldown
 ## Secretly Killer<br>
-陣営 : Imposter
+Team : Imposter
 No kill warp after a kill.
 Role based : Imposter
 Positions taken from [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles).
