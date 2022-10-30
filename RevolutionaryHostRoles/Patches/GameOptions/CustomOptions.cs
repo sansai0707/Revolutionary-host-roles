@@ -466,14 +466,14 @@ namespace RevolutionaryHostRoles
             var crewRoles = buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, true) + "\n";
             var impRoles = buildOptionsOfType(CustomOption.CustomOptionType.Impostor, true) + "\n";
             var neutralRoles = buildOptionsOfType(CustomOption.CustomOptionType.Neutral, true);
-            return crewRoles　+ impRoles + neutralRoles;
+            return "<color=#00ffff>クルーメイト\n</color>" + crewRoles + "<color=#ff0000>インポスター\n</color>" +  impRoles + "<color=#c0c0c0>第三陣営\n</color>" + neutralRoles;
         }
         public static string buildRoleSettings()
         {
             var crewRoles = buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false) + "\n";
             var impRoles = buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false) + "\n";
             var neutralRoles = buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false);
-            return crewRoles + impRoles + neutralRoles;
+            return "<color=#00ffff>クルーメイト\n</color>" + crewRoles + "<color=#ff0000>インポスター\n</color>" + impRoles + "<color=#c0c0c0>第三陣営\n</color>" + neutralRoles;
         }
 
         public static string buildOptionsOfType(CustomOption.CustomOptionType type, bool headerOnly)
@@ -504,26 +504,26 @@ namespace RevolutionaryHostRoles
                 {
                     if (option == CustomOptionHolder.crewmateRolesCountMax)
                     {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの数");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最大人数");
                         var max = CustomOptionHolder.crewmateRolesCountMax.GetSelection();
                         var optionValue = $"{max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     }
                     else if (option == CustomOptionHolder.neutralRolesCountMax)
                     {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の数");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営の最大人数");
                         var max = CustomOptionHolder.neutralRolesCountMax.GetSelection();
                         var optionValue = $"{max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     }
                     else if (option == CustomOptionHolder.impostorRolesCountMax)
                     {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの数");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスターの最大人数");
                         var max = CustomOptionHolder.impostorRolesCountMax.GetSelection();
                         var optionValue = $"{max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     }
-                    else if ((option == CustomOptionHolder.crewmateRolesCountMax) || (option == CustomOptionHolder.neutralRolesCountMax) || (option == CustomOptionHolder.impostorRolesCountMax))
+                    else if ((option == CustomOptionHolder.crewmateRolesCountMax) || (option == CustomOptionHolder.impostorRolesCountMax) || (option == CustomOptionHolder.neutralRolesCountMax))
                     {
                         continue;
                     }

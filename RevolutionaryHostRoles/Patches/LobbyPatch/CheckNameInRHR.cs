@@ -19,6 +19,7 @@ namespace RevolutionaryHostRoles.Patches
         {
             public static bool Prefix(GameStartManager __instance)
             {
+                if (!AmongUsClient.Instance.AmHost) return true;
                 if (AmongUsClient.Instance.GetHost().PlayerName.ToUpper().Contains("RHR"))
                     return true;
                 else

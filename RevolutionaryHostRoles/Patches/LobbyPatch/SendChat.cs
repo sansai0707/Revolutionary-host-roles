@@ -2,6 +2,7 @@
 using Hazel;
 using InnerNet;
 using Rewired;
+using Rewired.Utils.Platforms.Windows;
 using System;
 using UnityEngine.AddressableAssets.ResourceLocators;
 
@@ -60,7 +61,7 @@ namespace RevolutionaryHostRoles.Patches
                 if (AmongUsClient.Instance.AmHost)
                 {
 
-                    __instance.myPlayer.SendChatPrivate(__instance.myPlayer, $"この部屋はMOD【Revolutionary Host Roles】\n通称【RHR】が実装されている部屋です。\n/mや/grなどの他のMODの\nコマンドは控えて下さい\n現在のホストは【{AmongUsClient.Instance.GetHost().PlayerName}】です。\n/cと送ることでコマンド一覧を確認出来ます。");
+                    __instance.myPlayer.SendChatPrivate(__instance.myPlayer, $"この部屋はMOD【Revolutionary Host Roles】\n通称【RHR】が実装されている部屋です。\n現在のホストは【{AmongUsClient.Instance.GetHost().PlayerName}】です。\n/cと送ることでコマンド一覧を確認出来ます。");
                 }
             }
         }
@@ -71,9 +72,13 @@ namespace RevolutionaryHostRoles.Patches
             {
                 var Commands = chatText.Split(" ");
                 //switchの書き方わかんねぇ！！()
+
                 if (Commands[0].Equals("/c", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/C", StringComparison.OrdinalIgnoreCase))//送られたメッセージ
                 {
-                    SourcePlayer.SendChatPrivate(SourcePlayer, $"コマンド一覧\n/c : コマンド一覧を記載します。\n/h : ホストの名前を記載します\n/Roles : 現在入っている役職を記載します\n/RolesS : 現在入っている役職の設定を記載します\n/Settings : 現在のRHRの設定を記載します");
+                    SourcePlayer.SendChatPrivate(SourcePlayer, $"コマンド一覧\n/c : コマンド一覧を記載します。\n/h : ホストの名前を記載します\n"
+                        + "/ar : 全ての役職の選出する確率を記載します\n/ar c: クルー役職の選出する確率を記載します\n/ar i: インポスター役職の選出する確率を記載します\n/ar n 第三陣営役職の選出する確率を記載します: \n" +
+                        "/re : 全ての役職の設定を記載します\n/re c: クルーの役職の設定を記載します\n/re i: インポスターの役職の設定を記載します\n/re n: 第三陣営の役職の設定を記載します\n"
+                        + "/se : 現在のRHRの設定を記載します");
                     return false;
                 }
                 else if (Commands[0].Equals("/h", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/H", StringComparison.OrdinalIgnoreCase))
@@ -81,28 +86,76 @@ namespace RevolutionaryHostRoles.Patches
                     SourcePlayer.SendChatPrivate(SourcePlayer, $"ホスト : {AmongUsClient.Instance.GetHost().PlayerName}");
                     return false;
                 }
-                else if (Commands[0].Equals("/Roles", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/roles", StringComparison.OrdinalIgnoreCase))
+                else if (Commands[0].Equals("/ar", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames( $"入っている役職一覧\n{GameOptionsDataPatch.buildRoleOptions()}");
-                    
-                   SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
-                        return false;
-                }
-                else if (Commands[0].Equals("/RolesS", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/roleS", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames( $"入っている役職の設定一覧\n{GameOptionsDataPatch.buildRoleSettings()}");
-                    SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                    if (Commands.Length == 1)
+                    {
+                        if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"全ての役職の確率一覧\n{GameOptionsDataPatch.buildRoleOptions()}");
+                        SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                    }
+                    switch (Commands[1])
+                    {
+
+                        case "c":
+                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"クルー役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, true)}");
+                            SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                            break;
+                        case "i":
+                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"インポスター役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Impostor, true)}");
+                            SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                            break;
+                        case "n":
+                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"第三陣営役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Neutral, true)}");
+                            SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                            break;
+                    }
                     return false;
                 }
-                else if (Commands[0].Equals("/Settings", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/settings", StringComparison.OrdinalIgnoreCase))
+                else if (Commands[0].Equals("/re", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (Commands.Length == 1)
+                    {
+                        if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"全ての設定一覧\n{GameOptionsDataPatch.buildRoleSettings()}");
+                        SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                    }
+                    switch (Commands[1])
+                    {
+
+                        case "c":
+                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"クルーの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false)}");
+                            SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                            break;
+                        case "i":
+                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"インポスターの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false)}");
+                            SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                            break;
+                        case "n":
+                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"第三陣営の設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false)}");
+                            SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                            break;
+                    }
+                    return false;
+                }
+                else if (Commands[0].Equals("/SettingsExplain", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/SE", StringComparison.OrdinalIgnoreCase))
                 {
                     SourcePlayer.RpcSetNames($"RHRの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.General, false)}");
                     if (SourcePlayer.AmOwner) SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                     return false;
                 }
-                else if (Commands[0].ToUpper().Contains("/gr", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/n", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/ar", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/l", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/ar", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/w", StringComparison.OrdinalIgnoreCase))
+                else if (Commands[0].Equals("/rename", StringComparison.OrdinalIgnoreCase))
                 {
-                    SourcePlayer.SendChatPrivate(SourcePlayer, "他モッドのコマンドを送らないでください");
+                    if (SourcePlayer.AmOwner)
+                    {
+                        if (Commands.Length > 1)
+                        {
+                            SourcePlayer.RpcSetName(Commands[1]);
+                        }
+                    }
+                    return false;
+                }
+                else if (Commands[0].ToUpper().Contains("/gr", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/n", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/l", StringComparison.OrdinalIgnoreCase) || Commands[0].ToUpper().Contains("/w", StringComparison.OrdinalIgnoreCase))
+                {
+                    SourcePlayer.SendChatPrivate(SourcePlayer, "無効なコマンドです");
                     return false;
                 }
                 else
