@@ -44,7 +44,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 |[Crewmates](#Crewmates)  |      [Imposters](#Imposters)       |[Neutrals](#Neutrals)|
 -------------------|-----------------------------|------------|
 | [Bait](#Bait)           |[Tricker](#Tricker)                   |            |
-|                  |[Secretly Killer](#Secretly Killer)       |    　　　  |
+|                  |[Secretly Killer](#SecretlyKiller)       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
@@ -67,7 +67,7 @@ A kill after shaping will not produce a corpse.
 Role based : Shapeshifter
 ### Setting items
 KillCooldown
-## Secretly Killer<br>
+## SecretlyKiller<br>
 Team : Imposter
 No kill warp after a kill.
 Role based : Imposter
