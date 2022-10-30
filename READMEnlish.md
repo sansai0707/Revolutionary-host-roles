@@ -63,7 +63,7 @@ Time from kill to being reported
 ## Imposters<br>
 ## Tricker<br>
 Team : Imposters
-A kill after shaping will not produce a corpse.
+A kill after Shapesift will not produce a corpse.
 Role based : Shapeshifter
 ### Setting items
 KillCooldown
