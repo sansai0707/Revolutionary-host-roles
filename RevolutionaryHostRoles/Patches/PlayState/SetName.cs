@@ -1,14 +1,4 @@
-﻿using BepInEx;
-using BepInEx.Configuration;
-using BepInEx.IL2CPP;
-using Epic.OnlineServices.TitleStorage;
-using HarmonyLib;
-using JetBrains.Annotations;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEngine.UI.Button;
-using Object = UnityEngine.Object;
-
+﻿
 namespace RevolutionaryHostRoles.Patches
 {
     public static class SetNamePatch
@@ -16,19 +6,14 @@ namespace RevolutionaryHostRoles.Patches
 
         public static void SetRoleName()
         {
-            string AddName = "";
-            string TaskText = "";
             foreach (PlayerControl p in CachedPlayer.AllPlayers)
             {
+                string AddName = "";
+                string TaskText = "";
                 if (AmongUsClient.Instance.GameState == AmongUsClient.GameStates.Started)
                 {
-                    /*
-                    if ()
-                    {*/
-
-                        p.RpcSetNamePrivate("<size=75%>" + p.RoleName() + "</size>\n" + p.PlayerName());
-                    /*}
-                    */
+                    string Name = "<size=75%>" + p.RoleName() + "</size>\n" + p.PlayerName();
+                    p.RpcSetNamePrivate(Name);
                 }
             }
         }

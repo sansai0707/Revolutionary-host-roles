@@ -6,7 +6,9 @@ using HarmonyLib;
 using Hazel;
 using Il2CppSystem.Diagnostics;
 using RevolutionaryHostRoles.Roles;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Bindings;
 using UnityEngine.Networking.Types;
 using UnityEngine.PlayerLoop;
 using static UnityEngine.UI.Button;
@@ -14,100 +16,115 @@ using Object = UnityEngine.Object;
 
 namespace RevolutionaryHostRoles.Patches
 {
-    public static class PlayerControls
-    {
-        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]//キルされるときのやつ
-        class MurderPlayer
-        {
-            public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
-            {
-                if (target.IsRole(CustomRoleId.Bait))
-                new LateTask(() => { __instance.CmdReportDeadBody(target.Data); } , CustomOptionHolder.BaitReportTime.GetFloat(), "BaitKill");
-            }
-        }
-        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]//タスク1個終わらした時
-        class CompleteTaskPatch
-        {
-            public static void Postfix(PlayerControl __instance)
-            {
 
-            }
-        }
-        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckMurder))]//キルしようとした時
-        class CheckMurderPatch
+    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]//キルされるときのやつ
+    class MurderPlayer
+    {
+        public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
         {
-            public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+            if (target.IsRole(CustomRoleId.Bait))
+                new LateTask(() => { __instance.CmdReportDeadBody(target.Data); }, CustomOptionHolder.BaitReportTime.GetFloat(), "BaitKill");
+        }
+    }
+    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]//タスク1個終わらした時
+    class CompleteTaskPatch
+    {
+        public static void Postfix(PlayerControl __instance)
+        {
+
+        }
+    }
+    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckMurder))]//キルしようとした時
+    class CheckMurderPatch
+    {
+        public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+        {
+            switch (__instance.GetRole())
+            {
+                case CustomRoleId.Tricker:
+                    if (RoleDatas.Tricker.IsTrickOK)
+                    {
+
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(target.NetId, (byte)RpcCalls.Exiled, SendOption.None);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        target.Exiled();//Rpc
+                        RoleDatas.Tricker.IsTrickNO = true;
+                        RoleDatas.Tricker.IsTrickOK = false;
+                        RoleDatas.Tricker.IsTricked[__instance] = true;
+                        RoleDatas.Tricker.IsTrick[__instance] = false;
+                        __instance.RpcProtectPlayer(__instance, 0);
+                        RoleDatas.Tricker.IsChangeKillCool = true;
+                        new LateTask(() => { SyncSetting.CustomSyncSettings(__instance); }, 0.01f, "KillCoolReset");
+                        new LateTask(() => { RoleDatas.Tricker.IsChangeKillCool = false; __instance.RpcMurderPlayer(__instance); }, 0.05f, "KillCoolReset");
+                        new LateTask(() => { SyncSetting.CustomSyncSettings(__instance); }, 0.1f, "KillCoolReset");
+                        return false;
+                    }
+                    else
+                    {
+                        SyncSetting.CustomSyncSettings(__instance);
+                        return true;
+                    }
+                case CustomRoleId.SecretlyKiller:
+                    target.RpcMurderPlayer(target);
+                    target.RpcProtectPlayer(target, 0);
+                    RoleDatas.SecretlyKiller.IsChangeKillCool = true;
+
+                    new LateTask(() => { SyncSetting.CustomSyncSettings(__instance); }, 0.01f, "KillCoolReset");
+                    new LateTask(() => { RoleDatas.SecretlyKiller.IsChangeKillCool = false; __instance.RpcMurderPlayer(target); }, 0.05f, "KillCoolReset");
+                    new LateTask(() => { SyncSetting.CustomSyncSettings(__instance); }, 0.1f, "KillCoolReset");
+                    return false;
+            }
+            return true;
+        }
+    }
+    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Shapeshift))]//シェイプした時
+    class ShapesihftPatch
+    {
+
+        public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+        {
+            if (!(__instance.PlayerId == target.PlayerId))
             {
                 switch (__instance.GetRole())
                 {
                     case CustomRoleId.Tricker:
-                        if (RoleDatas.Tricker.IsTrickOK)
-                        {
 
-                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(target.NetId, (byte)RpcCalls.Exiled, SendOption.None);
-                            AmongUsClient.Instance.FinishRpcImmediately(writer);
-                            target.Exiled();//強制Rpc
-                            RoleDatas.Tricker.IsTrickNO = true;
-                            RoleDatas.Tricker.IsTrickOK = false;
-                            RoleDatas.Tricker.IsTricked[__instance] = true;
-                            RoleDatas.Tricker.IsTrick[__instance] = false;
-                            return false;
+                        /*if (!RoleDatas.Tricker.IsTricked.ContainsKey(__instance))
+                        {
+                            RoleDatas.Tricker.IsTricked[__instance] = false;
+                            RoleDatas.Tricker.IsTrick[__instance] = true;
+                        }
+                        */
+                        if (!RoleDatas.Tricker.IsTrickNO)
+                        {
+                            RoleDatas.Tricker.IsTrickOK = true;
                         }
                         else
                         {
-                            return true;
+
                         }
+                        break;
                 }
-                return true;
             }
+            return true;
         }
-        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Shapeshift))]//シェイプした時
-        class ShapesihftPatch
+    }
+    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.ReportDeadBody))]
+    public class ReportDeadBodyPatch
+    {
+        public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo target)
         {
-
-            public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+            if (target == null && ModeHelper.IsMode(CustomPlusModeId.NotButton))
             {
-                if (!(__instance.PlayerId == target.PlayerId))
-                {
-                    switch (__instance.GetRole())
-                    {
-                        case CustomRoleId.Tricker:
-
-                            /*if (!RoleDatas.Tricker.IsTricked.ContainsKey(__instance))
-                            {
-                                RoleDatas.Tricker.IsTricked[__instance] = false;
-                                RoleDatas.Tricker.IsTrick[__instance] = true;
-                            }
-                            */
-                            if (!RoleDatas.Tricker.IsTrickNO)
-                            {
-                                RoleDatas.Tricker.IsTrickOK = true;
-                            }
-                            else
-                            {
-
-                            }
-                            break;
-                    }
-                }
-                return true;
+                return false;
             }
-        }
-        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.ReportDeadBody))]
-        class ReportDeadBodyPatch
-        {
-            public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo target)
+            else if (target != null && ModeHelper.IsMode(CustomPlusModeId.NotReport))
             {
-                if (target == null && ModeHelper.IsMode(CustomPlusModeId.NotButton))
-                {
-                    return false;
-                }
-                else if (target != null && ModeHelper.IsMode(CustomPlusModeId.NotReport))
-                {
-                    return false;
-                }
-                return true;
+                return false;
             }
+            return true;
         }
+        public static List<PlayerControl> DiePlayers;
+
     }
 }

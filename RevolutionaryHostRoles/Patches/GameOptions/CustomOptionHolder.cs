@@ -33,9 +33,13 @@ namespace RevolutionaryHostRoles
         public static CustomOption impostorRolesCountMax;
 
         public static CustomOption TrickerOption;
+        public static CustomOption TrickerKillCool;
 
         public static CustomOption BaitOption;
         public static CustomOption BaitReportTime;
+
+        public static CustomOption SecretlyKillerOption;
+        public static CustomOption SecretlyKillerKillCool;
 
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
@@ -55,19 +59,25 @@ namespace RevolutionaryHostRoles
         {
 
             //役職
+            //インポスター
+            int Impo = 1000;
+            TrickerOption = CustomOption.Create(Impo, Types.Impostor, cs(Color.red, "トリッカー"), rates, null, true);
+            TrickerKillCool = CustomOption.Create(Impo + 1, Types.Impostor, "キルクール", 30f, 0f, 60f, 1f, TrickerOption);
+            SecretlyKillerOption = CustomOption.Create(Impo + 2, Types.Impostor, cs(Color.red, "シークレットリーキラー"), rates, null, true);
+            SecretlyKillerKillCool = CustomOption.Create(Impo + 3, Types.Impostor, "キルクール", 30f, 0f, 60f, 1f, SecretlyKillerOption);
+            //クルーメイト
+            int Crew = 10000;
+            BaitOption = CustomOption.Create(Crew, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);
+            BaitReportTime = CustomOption.Create(Crew + 1, Types.Crewmate, "通報までの時間", 3f, 0f, 10f, 1f, BaitOption);
 
-            TrickerOption = CustomOption.Create(1000, Types.Impostor, cs(Color.red, "トリッカー"), rates, null, true);
-            BaitOption = CustomOption.Create(1001, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);
-            BaitReportTime = CustomOption.Create(1002, Types.Crewmate, "通報までの時間", 3f, 0f, 10f, 1f, BaitOption);
+
+            //テンプレ
             //temple(Role) = CustomOption.Create(Id, Types.Impostor, cs(Color.red, "トラッカー"), rates, null, true);
             //temple(float) = CustomOption.Create(Id, Types.Impostor, "設定名", //デフォルトf, //最小の値f, //最大の値f, //刻む数字(語彙力)f, templeOption)
             //temple(bool) = CustomOption.Create(Id, Types.Crewmate, "設定名", false, templeOption);
 
-            //プリセットと最小and最大人数
+            //RHRの設定
             presetSelection = CustomOption.Create(0, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "プリセット"), presets, null, true);
-
-
-            // Using new id's for the options to not break compatibilty with older versions
 
             crewmateRolesCountMin = CustomOption.Create(300, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最小人数"), 15f, 0f, 15f, 1f, null, true);
             crewmateRolesCountMax = CustomOption.Create(1, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルーメイトの最大人数"), 15f, 0f, 15f, 1f);

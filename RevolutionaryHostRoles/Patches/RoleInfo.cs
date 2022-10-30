@@ -6,7 +6,7 @@ using RevolutionaryHostRoles.Patches;
 using RevolutionaryHostRoles;
 using RevolutionaryHostRoles.Roles;
 
-namespace TheOtherRoles
+namespace RevolutionaryHostRoles
 {
     class RoleInfo
     {

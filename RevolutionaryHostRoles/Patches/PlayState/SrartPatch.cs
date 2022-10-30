@@ -21,8 +21,14 @@ namespace RevolutionaryHostRoles.Patches
             {
                 RoleDatas.DataLoads();
                 NameHelper.PlayerNames = new();
+                ReportDeadBodyPatch.DiePlayers = new();
                 return true;
             }
+            public static void Postfix()
+            {
+
+            }
+
         }
         [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.StartGame))]
         public static class BeginStart
