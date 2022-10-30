@@ -4,50 +4,48 @@
 # Revolutionary-host-roles
 ![RHRlogo](/images/RHRLogoIcon.png)
 
-## MODについて
+## About This Mod
 This mod is not affiliated with Among Us or Innersloth LLC, and the content contained therein is not endorsed or otherwise sponsored by Innersloth LLC. Portions of the materials contained herein are property of Innersloth LLC.<br>
  © Innersloth LLC. <br>
-訳:これはInnerslothが作ったものじゃなくて個人が作ったものなのでInnerslothは関係ないです。あとこの中にある素材の一部はInnerslothのものです。<br>
-また、このMODについてInnerslothに問い合わせるのはお控えください。
 
-## リンク
+## Link
 [discord](https://discord.gg/KC3G57CWeU)
 
-## クレジット
-- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければこのMODは作れてません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他の開発者さんありがとうございます！！！！
+## Credits
+- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)  Without this mod, RHR would not have been built.(We borrow source code from LoadSpriteFromResources, CustomOption, ToByte, RoleAssignment, CustomRpc and more!)！！Thank you [TheOtherRolesAU](https://github.com/TheOtherRolesAU) and other developers！！！！
 
-- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivate、SyncSetting)、そして、シークレットリーキラーのアイデア元です！！！、[ykundesu](https://github.com/ykundesu)さんや、その他のSNRの開発者さんありがとうございます！！！
+- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) This one, as well as [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) We've referenced and borrowed a lot of source code! (RpcSetNamePrivate, SyncSetting), and the source of the idea for the Secretly Killer! Thank you, [ykundesu](https://github.com/ykundesu) and other SNR developers!!!
 
-- [TownOfHost](https://github.com/tukasa0001/TownOfHost) LateTaskやCustomRpcSenderをお借りしました！！！[takusa0001](https://github.com/tukasa0001)さんや、TOHの開発者さんさんありがとうございます
+- [TownOfHost](https://github.com/tukasa0001/TownOfHost) I borrowed LateTask and CustomRpcSender!!! Thanks to [takusa0001](https://github.com/tukasa0001) and the developers of TOH!
 
-## 開発者
-- [山菜](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
-- [しゅれ](https://github.com/oshurecat) ([Twitter](https://twitter.com/syure_soncho))/([YouTube](https://www.youtube.com/channel/UCvMjW7DUM0b_TA5TRjJ3BMw))
-- [れもんず](https://github.com/remons123)([Twitter](https://twitter.com/abcremons))
-- [ハロン](https://github.com/Haroweeeeen)(Twitter)/(YouTube)
-- [シャンパン](https://github.com/Shanpan2)([Twitter](https://twitter.com/shanpanus?s=21&t=VkDFSOnM3bkZQ7Rdw1vNHA))/(YouTube)
-## 開発協力者
+## Developers
+- [sansai](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
+- [oshyurecat](https://github.com/oshurecat) ([Twitter](https://twitter.com/syure_soncho))/([YouTube](https://www.youtube.com/channel/UCvMjW7DUM0b_TA5TRjJ3BMw))
+- [Remons](https://github.com/remons123)([Twitter](https://twitter.com/abcremons))
+- [Haron](https://github.com/Haroweeeeen)(Twitter)/(YouTube)
+- [Syanpan](https://github.com/Shanpan2)([Twitter](https://twitter.com/shanpanus?s=21&t=VkDFSOnM3bkZQ7Rdw1vNHA))/(YouTube)
+## Special Thanks
 
-## 内容
-### コマンド
-|キー  |コマンドの内容                            |
+## Substance
+### Command
+|Key  |Abount This Command                            |
 -------|------------------------------------------|
-| /c   |コマンド一覧を確認できます        　　　  |
-| /h   |現在のホストを確認出来ます        　　　  |
-| /ar  |全ての役職の選出する確率を記載します      |
-| /ar c|全てのクルー役職の選出する確率を記載します|
-| /ar i|全てのインポ役職の選出する確率を記載します|
-| /ar n|全ての第三陣営役職の選出確率を記載します  |
-| /re  |全ての役職の設定を記載します  　　　　    |
-| /re c|全てのクルーの設定を記載します  　　      |
-| /re i|全てのインポスター役職の設定を記載します  |
-| /re n|全ての第三陣営の役職の設定を記載します    |
-| /se  |全てのRHRの設定を記載します               |
-### 役職
-|[クルーメイト役職](#クルーメイト役職)  |      [インポスター役職](#インポスター役職)       |[第三陣営役職](#第三陣営役職)|
+| /c   |You can check the list of commands        　　　          |
+| /h   |You can check the current host        　　　              |
+| /ar  |List the probability of electing all roles               |
+| /ar c|List the probability of electing all crew roles          |
+| /ar i|List the probability of electing all imposter roles      |
+| /ar n|List the probability of election for all neutrals roles  |
+| /re  |Describe the settings for all roles  　　　　             |
+| /re c|Describe the setting of all crew roles  　　              | 
+| /re i|Describe the settings for all imposter roles              |
+| /re n|Describe the set-up of all Neutrals roles                 |
+| /se  |Describe all RHR settings                                 |
+### Roles
+|[Crewmates](#Crewmates)  |      [Imposters](#Imposters)       |[Neutrals](#Neutrals)|
 -------------------|-----------------------------|------------|
-| [ベイト](#ベイト)           |[トリッカー](#トリッカー)                   |            |
-|                  |[シークレットリーキラー](#シークレットリーキラー)       |    　　　  |
+| [Bait](#Bait)           |[Tricker](#Tricker)                   |            |
+|                  |[Secretly Killer](#SecretlyKiller)       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
@@ -56,25 +54,25 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 
-## クルーメイト役職<br>
-## ベイト<br>
-陣営 : クルーメイト
-ベイトがキルされてからn秒後にベイトをキルした人にベイト自身の死体を通報させます。
-置き換え役職 : クルー
-### 設定項目
-キルされてから通報されるまでの時間
-## インポスター役職<br>
-## トリッカー<br>
-陣営 : インポスター
-シェイプした後のキルでは死体が出ません。
-置き換え役職 : シェイプシフター
-### 設定項目
-キルクール
-## シークレットリーキラー<br>
-陣営 : インポスター
-キルをしてもキルワープが出ません。
-置き換え役職 : インポスター
-[SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)からの引用役職です。
-### 設定項目
-キルクール
-## 第三陣営役職
+## Crewmates<br>
+## Bait<br>
+Team : Crewmates
+N seconds after the bait is killed, have the person who killed the bait report the bait's own corpse.
+Role based : Crewmates
+### Setting items
+Time from kill to being reported
+## Imposters<br>
+## Tricker<br>
+Team : Imposters
+A kill after shaping will not produce a corpse.
+Role based : Shapeshifter
+### Setting items
+KillCooldown
+## Secretly Killer<br>
+陣営 : Imposter
+No kill warp after a kill.
+Role based : Imposter
+Positions taken from [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles).
+### Setting items
+KillCooldown
+## Neutrals
