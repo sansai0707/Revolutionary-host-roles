@@ -44,7 +44,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 |[Crewmates](#Crewmates)  |      [Imposters](#Imposters)       |[Neutrals](#Neutrals)|
 -------------------|-----------------------------|------------|
 | [Bait](#Bait)           |[Tricker](#Tricker)                   |            |
-|                  |[Secretly Killer](#SecretlyKiller)       |    　　　  |
+|                  |[Secretly Killer](#Secretly Killer)       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
