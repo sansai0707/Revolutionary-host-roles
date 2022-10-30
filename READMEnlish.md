@@ -1,5 +1,5 @@
-→ [日本語](README.md)
-[English](READMEnlish.md)
+[日本語](README.md)
+→ [English](READMEnlish.md)
 
 # Revolutionary-host-roles
 ![RHRlogo](/images/RHRLogoIcon.png)
