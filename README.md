@@ -1,4 +1,6 @@
 # Revolutionary-host-roles
+→ [日本語](README.md)<br>
+[English](READMEnlish.md)<br>
 ![RHRlogo](/images/RHRlogo.png)
 
 ## MODについて
