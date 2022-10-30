@@ -16,7 +16,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 - [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) This one, as well as [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) We've referenced and borrowed a lot of source code! (RpcSetNamePrivate, SyncSetting), and the source of the idea for the Secretly Killer! Thank you, [ykundesu](https://github.com/ykundesu) and other SNR developers！！！
 
-- [TownOfHost](https://github.com/tukasa0001/TownOfHost) I borrowed LateTask and CustomRpcSender!!! Thanks to [takusa0001](https://github.com/tukasa0001) and the developers of TOH!！！
+- [TownOfHost](https://github.com/tukasa0001/TownOfHost) I borrowed LateTask and CustomRpcSender!!! Thanks to [takusa0001](https://github.com/tukasa0001) and the developers of TOH！！！
 
 ## Developers
 - [sansai](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
