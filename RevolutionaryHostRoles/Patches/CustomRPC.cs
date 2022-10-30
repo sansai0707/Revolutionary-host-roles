@@ -66,6 +66,9 @@ namespace RevolutionaryHostRoles
                         case CustomRoleId.Bait:
                             Bait.BaitPlayer.Add(player);
                             break;
+                        case CustomRoleId.SecretlyKiller:
+                            SecretlyKiller.SecretlyKillerPlayer.Add(player);
+                            break;
                     }
                 }
         }

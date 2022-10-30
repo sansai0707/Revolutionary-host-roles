@@ -90,22 +90,22 @@ namespace RevolutionaryHostRoles.Patches
                 {
                     if (Commands.Length == 1)
                     {
-                        if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"全ての役職の確率一覧\n{GameOptionsDataPatch.buildRoleOptions()}");
+                        SourcePlayer.RpcSetNames($"全ての役職の確率一覧\n{GameOptionsDataPatch.buildRoleOptions()}");
                         SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                     }
                     switch (Commands[1])
                     {
 
                         case "c":
-                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"クルー役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, true)}");
+                             SourcePlayer.RpcSetNames($"クルー役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, true)}");
                             SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                             break;
                         case "i":
-                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"インポスター役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Impostor, true)}");
+                             SourcePlayer.RpcSetNames($"インポスター役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Impostor, true)}");
                             SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                             break;
                         case "n":
-                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"第三陣営役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Neutral, true)}");
+                             SourcePlayer.RpcSetNames($"第三陣営役職の確率一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Neutral, true)}");
                             SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                             break;
                     }
@@ -115,22 +115,22 @@ namespace RevolutionaryHostRoles.Patches
                 {
                     if (Commands.Length == 1)
                     {
-                        if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"全ての設定一覧\n{GameOptionsDataPatch.buildRoleSettings()}");
+                         SourcePlayer.RpcSetNames($"全ての設定一覧\n{GameOptionsDataPatch.buildRoleSettings()}");
                         SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                     }
                     switch (Commands[1])
                     {
 
                         case "c":
-                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"クルーの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false)}");
+                             SourcePlayer.RpcSetNames($"クルーの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false)}");
                             SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                             break;
                         case "i":
-                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"インポスターの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false)}");
+                             SourcePlayer.RpcSetNames($"インポスターの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false)}");
                             SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                             break;
                         case "n":
-                            if (SourcePlayer.AmOwner) SourcePlayer.RpcSetNames($"第三陣営の設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false)}");
+                             SourcePlayer.RpcSetNames($"第三陣営の設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false)}");
                             SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                             break;
                     }
@@ -139,7 +139,7 @@ namespace RevolutionaryHostRoles.Patches
                 else if (Commands[0].Equals("/SettingsExplain", StringComparison.OrdinalIgnoreCase) || Commands[0].Equals("/SE", StringComparison.OrdinalIgnoreCase))
                 {
                     SourcePlayer.RpcSetNames($"RHRの設定一覧\n{GameOptionsDataPatch.buildOptionsOfType(CustomOption.CustomOptionType.General, false)}");
-                    if (SourcePlayer.AmOwner) SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
+                     SourcePlayer.SendChatPrivate(SourcePlayer, $"\n");
                     return false;
                 }
                 else if (Commands[0].Equals("/rename", StringComparison.OrdinalIgnoreCase))

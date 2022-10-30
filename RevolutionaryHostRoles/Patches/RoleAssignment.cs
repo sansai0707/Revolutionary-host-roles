@@ -20,6 +20,7 @@ namespace RevolutionaryHostRoles.Patches
             AmongUsClient.Instance.FinishRpcImmediately(writer);
             RPCProcedure.resetVariables();
             assignRoles();
+            SyncSetting.CustomSyncSettings();
         }
         public static void assignRoles()
         {
@@ -67,6 +68,7 @@ namespace RevolutionaryHostRoles.Patches
             Dictionary<byte, int> crewSettings = new Dictionary<byte, int>();
 
             impSettings.Add((byte)CustomRoleId.Tricker, CustomOptionHolder.TrickerOption.GetSelection());
+            impSettings.Add((byte)CustomRoleId.SecretlyKiller, CustomOptionHolder.SecretlyKillerOption.GetSelection());
 
             //neutralSettings.Add((byte)RoleId.Jester, CustomOptionHolder.jesterSpawnRate.GetSelection());
 

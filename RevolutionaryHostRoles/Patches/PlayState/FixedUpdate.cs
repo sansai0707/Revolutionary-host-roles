@@ -17,7 +17,17 @@ namespace RevolutionaryHostRoles.Patches
     {
 
         public static void Postfix()
-        {
+        { 
+            foreach (PlayerControl p in CachedPlayer.AllPlayers)
+            {
+                if (p.IsDead())
+                {
+                    if (!ReportDeadBodyPatch.DiePlayers.Contains(p))
+                    {
+                        ReportDeadBodyPatch.DiePlayers.Add(p);
+                    }
+                }
+            }
             SetNamePatch.SetRoleName();
         }
     }

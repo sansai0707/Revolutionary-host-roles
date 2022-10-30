@@ -13,6 +13,7 @@ namespace RevolutionaryHostRoles
     {
         NormalRoles,
         Tricker,
-        Bait
+        Bait,
+        SecretlyKiller
     }
 }

@@ -13,6 +13,7 @@ namespace RevolutionaryHostRoles.Roles
         {
             Tricker.DataLoad();
             Bait.DataLoad();
+            SecretlyKiller.DataLoad();
         }
         public static class Tricker
         {
@@ -20,6 +21,7 @@ namespace RevolutionaryHostRoles.Roles
             public static List<PlayerControl> TrickerPlayer;
             public static Dictionary<bool, bool> IsTrick;
             public static bool IsTrickOK;
+            public static bool IsChangeKillCool;
             public static bool IsTrickNO;
             public static Dictionary<bool, bool> IsTricked;
             public static void DataLoad()
@@ -38,6 +40,16 @@ namespace RevolutionaryHostRoles.Roles
             public static void DataLoad()
             {
                 BaitPlayer = new();
+            }
+        }
+        public static class SecretlyKiller
+        {
+            public static Color color = new Color32(255, 255, 0, byte.MaxValue);
+            public static List<PlayerControl> SecretlyKillerPlayer;
+            public static bool IsChangeKillCool;
+            public static void DataLoad()
+            {
+                SecretlyKillerPlayer = new();
             }
         }
     }
