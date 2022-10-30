@@ -14,13 +14,12 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 ## Credits
 - [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)  Without this mod, RHR would not have been built.(We borrow source code from LoadSpriteFromResources, CustomOption, ToByte, RoleAssignment, CustomRpc and more!)！！Thank you [TheOtherRolesAU](https://github.com/TheOtherRolesAU) and other developers！！！！
 
-- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) This one, as well as [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) We've referenced and borrowed a lot of source code! (RpcSetNamePrivate, SyncSetting), and the source of the idea for the Secretly Killer! Thank you, [ykundesu](https://github.com/ykundesu) and other SNR developers!!!
+- [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) This one, as well as [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) We've referenced and borrowed a lot of source code! (RpcSetNamePrivate, SyncSetting), and the source of the idea for the Secretly Killer! Thank you, [ykundesu](https://github.com/ykundesu) and other SNR developers！！！
 
-- [TownOfHost](https://github.com/tukasa0001/TownOfHost) I borrowed LateTask and CustomRpcSender!!! Thanks to [takusa0001](https://github.com/tukasa0001) and the developers of TOH!
+- [TownOfHost](https://github.com/tukasa0001/TownOfHost) I borrowed LateTask and CustomRpcSender!!! Thanks to [takusa0001](https://github.com/tukasa0001) and the developers of TOH！！！
 
 ## Developers
 - [sansai](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
-- [oshyurecat](https://github.com/oshurecat) ([Twitter](https://twitter.com/syure_soncho))/([YouTube](https://www.youtube.com/channel/UCvMjW7DUM0b_TA5TRjJ3BMw))
 - [Remons](https://github.com/remons123)([Twitter](https://twitter.com/abcremons))
 - [Haron](https://github.com/Haroweeeeen)(Twitter)/(YouTube)
 - [Syanpan](https://github.com/Shanpan2)([Twitter](https://twitter.com/shanpanus?s=21&t=VkDFSOnM3bkZQ7Rdw1vNHA))/(YouTube)
@@ -69,7 +68,7 @@ Role based : Shapeshifter
 ### Setting items
 KillCooldown
 ## Secretly Killer<br>
-陣営 : Imposter
+ : Imposter
 No kill warp after a kill.
 Role based : Imposter
 Positions taken from [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles).
