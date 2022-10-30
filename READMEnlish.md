@@ -67,7 +67,7 @@ A kill after shaping will not produce a corpse.
 Role based : Shapeshifter
 ### Setting items
 KillCooldown
-## Secretly Killer<br>
+## SecretlyKiller<br>
 Team : Imposter
 No kill warp after a kill.
 Role based : Imposter
