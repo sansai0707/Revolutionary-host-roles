@@ -13,6 +13,7 @@ using static RevolutionaryHostRoles.Roles.RoleDatas;
 using static Rewired.Utils.Classes.Utility.ObjectInstanceTracker;
 using UnityEngine.UIElements;
 using RevolutionaryHostRoles.Patches;
+using RevolutionaryHostRoles.Roles;
 
 namespace RevolutionaryHostRoles
 {
@@ -68,6 +69,9 @@ namespace RevolutionaryHostRoles
                             break;
                         case CustomRoleId.SecretlyKiller:
                             SecretlyKiller.SecretlyKillerPlayer.Add(player);
+                            break;
+                        case CustomRoleId.UnderDog:
+                            RoleDatas.UnderDog.UnderDogPlayer.Add(player);
                             break;
                     }
                 }

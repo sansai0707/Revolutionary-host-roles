@@ -16,8 +16,9 @@
 
 - [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivate、SyncSetting)、そして、シークレットリーキラーのアイデア元です！！！、[ykundesu](https://github.com/ykundesu)さんや、その他SNR開発者さんありがとうございます！！！
 
-- [TownOfHost](https://github.com/tukasa0001/TownOfHost) LateTaskやCustomRpcSenderをお借りしました！！！[takusa0001](https://github.com/tukasa0001)さんや、TOHの開発者さんさんありがとうございます！！！
+- [TownOfHost](https://github.com/tukasa0001/TownOfHost) LateTaskやCustomRpcSenderをお借りしました！！！[tukasa0001](https://github.com/tukasa0001)さんや、TOHの開発者さんさんありがとうございます！！！
 
+- [TownOfUs](https://github.com/slushiegoose/Town-Of-Us) アンダードッグのアイデア元です！[slushiegoose](https://github.com/slushiegoose)さんや、その他の開発者さんありがとうございます！！
 ## 開発者
 - [山菜](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
 - [れもんず](https://github.com/remons123)([Twitter](https://twitter.com/abcremons))
@@ -45,7 +46,7 @@
 -------------------|-----------------------------|------------|
 | [ベイト](#ベイト)           |[トリッカー](#トリッカー)                   |            |
 |                  |[シークレットリーキラー](#シークレットリーキラー)       |    　　　  |
-|                  |　　　　　　　　　　　       |    　　　  |
+|                  |[アンダードッグ](#アンダードッグ)             |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
@@ -74,4 +75,12 @@
 [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)からの引用役職です。
 ### 設定項目
 キルクール
+## アンダードッグ<br>
+陣営 : インポスター
+最後のインポスターになった時にキルクールがn秒になります
+置き換え役職 : インポスター
+[TownOfUs](https://github.com/slushiegoose/Town-Of-Us)からの引用役職です。
+### 設定項目
+通常時のキルクール<br>
+最後のインポスターになった時のキルクール
 ## 第三陣営役職

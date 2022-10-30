@@ -39,6 +39,7 @@ namespace RevolutionaryHostRoles.Patches
     {
         public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
         {
+
             switch (__instance.GetRole())
             {
                 case CustomRoleId.Tricker:
@@ -73,6 +74,10 @@ namespace RevolutionaryHostRoles.Patches
                     new LateTask(() => { RoleDatas.SecretlyKiller.IsChangeKillCool = false; __instance.RpcMurderPlayer(target); }, 0.05f, "KillCoolReset");
                     new LateTask(() => { SyncSetting.CustomSyncSettings(__instance); }, 0.1f, "KillCoolReset");
                     return false;
+                case CustomRoleId.UnderDog:
+                    SyncSetting.CustomSyncSettings();//かくにん
+                    new LateTask(() => {__instance.RpcMurderPlayer(target); }, 0.05f, "Kill");
+                    return false;
             }
             return true;
         }
@@ -88,20 +93,9 @@ namespace RevolutionaryHostRoles.Patches
                 switch (__instance.GetRole())
                 {
                     case CustomRoleId.Tricker:
-
-                        /*if (!RoleDatas.Tricker.IsTricked.ContainsKey(__instance))
-                        {
-                            RoleDatas.Tricker.IsTricked[__instance] = false;
-                            RoleDatas.Tricker.IsTrick[__instance] = true;
-                        }
-                        */
                         if (!RoleDatas.Tricker.IsTrickNO)
                         {
                             RoleDatas.Tricker.IsTrickOK = true;
-                        }
-                        else
-                        {
-
                         }
                         break;
                 }

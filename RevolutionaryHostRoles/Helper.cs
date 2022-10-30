@@ -114,8 +114,9 @@ namespace RevolutionaryHostRoles
         public static CustomRoleId GetRole(this PlayerControl p)
         {
             if (RoleDatas.Tricker.TrickerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Tricker;
-            if (RoleDatas.Bait.BaitPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Bait;
-            if (RoleDatas.SecretlyKiller.SecretlyKillerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.SecretlyKiller;
+            else if (RoleDatas.Bait.BaitPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Bait;
+            else if (RoleDatas.SecretlyKiller.SecretlyKillerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.SecretlyKiller;
+            else if (RoleDatas.UnderDog.UnderDogPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.UnderDog;
             else return CustomRoleId.NormalRoles;
         }
         public static bool IsCheckListPlayerControl(this List<PlayerControl> ListDate, PlayerControl CheckPlayer)
@@ -157,6 +158,8 @@ namespace RevolutionaryHostRoles
                     return "<color=yellow>ベイト</color>";
                 case CustomRoleId.SecretlyKiller:
                     return "<color=red>シークレットリーキラー</color>";
+                case CustomRoleId.UnderDog:
+                    return "<color=red>アンダードッグ</color>";
                 default:
                     switch (p.Data.RoleType)
                     {

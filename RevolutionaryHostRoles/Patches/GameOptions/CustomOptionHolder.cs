@@ -32,14 +32,22 @@ namespace RevolutionaryHostRoles
         public static CustomOption neutralRolesCountMin;
         public static CustomOption impostorRolesCountMax;
 
+
+        //インポスター
         public static CustomOption TrickerOption;
         public static CustomOption TrickerKillCool;
 
+        public static CustomOption SecretlyKillerOption;
+        public static CustomOption SecretlyKillerKillCool;
+
+        public static CustomOption UnderDogOption;
+        public static CustomOption UnderDogKillCool;
+        public static CustomOption UnderDogChangeKillCool;
+        //クルー
         public static CustomOption BaitOption;
         public static CustomOption BaitReportTime;
 
-        public static CustomOption SecretlyKillerOption;
-        public static CustomOption SecretlyKillerKillCool;
+
 
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
@@ -63,8 +71,13 @@ namespace RevolutionaryHostRoles
             int Impo = 1000;
             TrickerOption = CustomOption.Create(Impo, Types.Impostor, cs(Color.red, "トリッカー"), rates, null, true);
             TrickerKillCool = CustomOption.Create(Impo + 1, Types.Impostor, "キルクール", 30f, 0f, 60f, 1f, TrickerOption);
+
             SecretlyKillerOption = CustomOption.Create(Impo + 2, Types.Impostor, cs(Color.red, "シークレットリーキラー"), rates, null, true);
             SecretlyKillerKillCool = CustomOption.Create(Impo + 3, Types.Impostor, "キルクール", 30f, 0f, 60f, 1f, SecretlyKillerOption);
+
+            UnderDogOption = CustomOption.Create(Impo + 4, Types.Impostor, cs(Color.red, "アンダードッグ"), rates, null, true);
+            UnderDogKillCool = CustomOption.Create(Impo + 5, Types.Impostor, "通常キルクール", 30f, 0f, 60f, 1f, UnderDogOption);
+            UnderDogKillCool = CustomOption.Create(Impo + 6, Types.Impostor, "ラストの時のキルクール", 20f, 0f, 60f, 1f, UnderDogOption);
             //クルーメイト
             int Crew = 10000;
             BaitOption = CustomOption.Create(Crew, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);

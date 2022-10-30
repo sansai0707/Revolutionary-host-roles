@@ -14,6 +14,7 @@ namespace RevolutionaryHostRoles
         NormalRoles,
         Tricker,
         Bait,
-        SecretlyKiller
+        SecretlyKiller,
+        UnderDog
     }
 }

@@ -14,6 +14,7 @@ namespace RevolutionaryHostRoles.Roles
             Tricker.DataLoad();
             Bait.DataLoad();
             SecretlyKiller.DataLoad();
+            UnderDog.DataLoad();
         }
         public static class Tricker
         {
@@ -31,6 +32,7 @@ namespace RevolutionaryHostRoles.Roles
                 IsTricked = new Dictionary<bool, bool>();
                 IsTrickOK = false;
                 IsTrickNO = false;
+                IsChangeKillCool = false;
             }
         }
         public static class Bait
@@ -50,6 +52,18 @@ namespace RevolutionaryHostRoles.Roles
             public static void DataLoad()
             {
                 SecretlyKillerPlayer = new();
+                IsChangeKillCool = false;
+            }
+        }
+        public static class UnderDog
+        {
+            public static Color color = new Color32(255, 255, 0, byte.MaxValue);
+            public static List<PlayerControl> UnderDogPlayer;
+            public static bool IsChangeKillCool;
+            public static void DataLoad()
+            {
+                UnderDogPlayer = new();
+                IsChangeKillCool = false;
             }
         }
     }

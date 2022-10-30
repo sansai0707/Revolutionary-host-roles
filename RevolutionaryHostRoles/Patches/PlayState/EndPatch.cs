@@ -21,7 +21,7 @@ namespace RevolutionaryHostRoles.Patches
             public static void Postfix(EndGameManager __instance)
             {
                 
-                //AdditionalTempData.Clear();
+
             }
 
 
@@ -31,7 +31,7 @@ namespace RevolutionaryHostRoles.Patches
 
                 public static void Postfix()
                 {
-                    //AdditionalTempData.Clear();
+
                 }
             }
         }
