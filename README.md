@@ -12,7 +12,7 @@
 [discord](https://discord.gg/KC3G57CWeU)
 
 ## クレジット
-- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければRHRは作れていません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！そして、マフィアのアイデア元になっています！！！TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他開発者さんありがとうございます！！！！
+- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければRHRは作れていません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！そして、マフィアのアイデア元になっています！！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他開発者さんありがとうございます！！！！
 
 - [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivate、SyncSetting)、そして、シークレットリーキラーのアイデア元です！！！、[ykundesu](https://github.com/ykundesu)さんや、その他SNR開発者さんありがとうございます！！！
 
