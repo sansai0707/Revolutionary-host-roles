@@ -16,25 +16,15 @@ using UnityEngine;
 using UnityEngine.Networking.Types;
 using Rewired.Libraries.SharpDX.RawInput;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
 
 namespace RevolutionaryHostRoles
 {
     public static class UnderDog
     {
-        public static bool IsLastImpostor()
-        {
-            foreach (var p in PlayerControl.AllPlayerControls)
-            {
-                int DeadImpostor = 0;
-                //pが死んでるandインポスターandアンダードッグじゃないならDeadImpostorを追加
-                if (p.IsDead() && p.IsImpostor() && !p.IsRole(CustomRoleId.UnderDog)) DeadImpostor++;
-                //設定のインポスター数 - アンダードッグ以外の死んでるインポスター数 = 1
-                if (PlayerControl.GameOptions.NumImpostors - DeadImpostor == 1)
-                    return true;
-                else
-                    return false;
-            }
-            return true;
-        }
+
+    }
+    public static class Mafia
+    {
     }
 }

@@ -27,7 +27,7 @@ namespace RevolutionaryHostRoles
                     optdata.KillCooldown = RoleDatas.SecretlyKiller.IsChangeKillCool ? CustomOptionHolder.SecretlyKillerKillCool.GetFloat() * 2 : CustomOptionHolder.SecretlyKillerKillCool.GetFloat();
                     break;
                 case CustomRoleId.UnderDog:
-                    optdata.KillCooldown = UnderDog.IsLastImpostor() ? CustomOptionHolder.UnderDogChangeKillCool.GetFloat() : CustomOptionHolder.UnderDogKillCool.GetFloat();
+                    optdata.KillCooldown = player.IsLastImpostor() ? CustomOptionHolder.UnderDogChangeKillCool.GetFloat() : CustomOptionHolder.UnderDogKillCool.GetFloat();
                     break;
             }
             if (player.IsDead()) optdata.AnonymousVotes = false;

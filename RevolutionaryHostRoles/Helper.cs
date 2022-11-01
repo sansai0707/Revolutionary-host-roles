@@ -105,6 +105,24 @@ namespace RevolutionaryHostRoles
         {
             return p.Data.Role.IsImpostor;
         }
+        public static bool IsLastImpostor(this PlayerControl p)
+        {
+
+            foreach (CachedPlayer player in CachedPlayer.AllPlayers)
+            {
+                //もしplayerが生きてるandインポスターand(PlayerControl)pじゃないプレイヤーがいるならreturn false;
+                if (player.PlayerControl.IsAlive() && player.PlayerControl.IsImpostor() && player.PlayerControl.PlayerId != p.PlayerId)
+                {
+                    return false;
+                }
+                //それ以外ならOK!!true
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
+        }
         public static bool IsRole(this PlayerControl p, CustomRoleId role)
         {
             CustomRoleId MyRole;
@@ -117,6 +135,7 @@ namespace RevolutionaryHostRoles
             else if (RoleDatas.Bait.BaitPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Bait;
             else if (RoleDatas.SecretlyKiller.SecretlyKillerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.SecretlyKiller;
             else if (RoleDatas.UnderDog.UnderDogPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.UnderDog;
+            else if (RoleDatas.Mafia.MafiaPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Mafia;
             else return CustomRoleId.NormalRoles;
         }
         public static bool IsCheckListPlayerControl(this List<PlayerControl> ListDate, PlayerControl CheckPlayer)
@@ -160,6 +179,8 @@ namespace RevolutionaryHostRoles
                     return "<color=red>シークレットリーキラー</color>";
                 case CustomRoleId.UnderDog:
                     return "<color=red>アンダードッグ</color>";
+                case CustomRoleId.Mafia:
+                    return "<color=red>マフィア</color>";
                 default:
                     switch (p.Data.RoleType)
                     {

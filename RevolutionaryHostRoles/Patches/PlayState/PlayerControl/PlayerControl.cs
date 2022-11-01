@@ -78,6 +78,8 @@ namespace RevolutionaryHostRoles.Patches
                     SyncSetting.CustomSyncSettings();//かくにん
                     new LateTask(() => {__instance.RpcMurderPlayer(target); }, 0.05f, "Kill");
                     return false;
+                case CustomRoleId.Mafia:
+                    return __instance.IsLastImpostor();
             }
             return true;
         }

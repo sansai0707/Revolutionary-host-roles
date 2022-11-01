@@ -70,6 +70,7 @@ namespace RevolutionaryHostRoles.Patches
             impSettings.Add((byte)CustomRoleId.Tricker, CustomOptionHolder.TrickerOption.GetSelection());
             impSettings.Add((byte)CustomRoleId.SecretlyKiller, CustomOptionHolder.SecretlyKillerOption.GetSelection());
             impSettings.Add((byte)CustomRoleId.UnderDog, CustomOptionHolder.UnderDogOption.GetSelection());
+            impSettings.Add((byte)CustomRoleId.Mafia, CustomOptionHolder.MafiaOption.GetSelection());
 
             //neutralSettings.Add((byte)RoleId.Jester, CustomOptionHolder.jesterSpawnRate.GetSelection());
 

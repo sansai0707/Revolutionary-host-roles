@@ -43,6 +43,8 @@ namespace RevolutionaryHostRoles
         public static CustomOption UnderDogOption;
         public static CustomOption UnderDogKillCool;
         public static CustomOption UnderDogChangeKillCool;
+
+        public static CustomOption MafiaOption;
         //クルー
         public static CustomOption BaitOption;
         public static CustomOption BaitReportTime;
@@ -77,7 +79,9 @@ namespace RevolutionaryHostRoles
 
             UnderDogOption = CustomOption.Create(Impo + 4, Types.Impostor, cs(Color.red, "アンダードッグ"), rates, null, true);
             UnderDogKillCool = CustomOption.Create(Impo + 5, Types.Impostor, "通常キルクール", 30f, 0f, 60f, 1f, UnderDogOption);
-            UnderDogKillCool = CustomOption.Create(Impo + 6, Types.Impostor, "ラストの時のキルクール", 20f, 0f, 60f, 1f, UnderDogOption);
+            UnderDogChangeKillCool = CustomOption.Create(Impo + 6, Types.Impostor, "ラストの時のキルクール", 20f, 0f, 60f, 1f, UnderDogOption);
+
+            MafiaOption = CustomOption.Create(Impo + 7, Types.Impostor, cs(Color.red, "マフィア"), rates, null, true);
             //クルーメイト
             int Crew = 10000;
             BaitOption = CustomOption.Create(Crew, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);

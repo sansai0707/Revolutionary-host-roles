@@ -11,10 +11,14 @@ namespace RevolutionaryHostRoles
 {
     public enum CustomRoleId
     {
+        //バニラ役職
         NormalRoles,
+        //インポスター役職
         Tricker,
-        Bait,
         SecretlyKiller,
-        UnderDog
+        UnderDog,
+        Mafia,
+        //クルー役職
+        Bait
     }
 }

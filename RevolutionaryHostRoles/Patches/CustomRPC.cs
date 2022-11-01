@@ -73,6 +73,9 @@ namespace RevolutionaryHostRoles
                         case CustomRoleId.UnderDog:
                             RoleDatas.UnderDog.UnderDogPlayer.Add(player);
                             break;
+                        case CustomRoleId.Mafia:
+                            RoleDatas.Mafia.MafiaPlayer.Add(player);
+                            break;
                     }
                 }
         }
