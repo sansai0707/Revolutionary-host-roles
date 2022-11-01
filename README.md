@@ -1,5 +1,5 @@
 → [日本語](README.md)<br>
-[English](READMEnlish.md)<br>
+[English](README-English.md)<br>
 
 # Revolutionary-host-roles
 ![RHRlogo](/images/RHRLogoIcon.png)
@@ -12,7 +12,7 @@
 [discord](https://discord.gg/KC3G57CWeU)
 
 ## クレジット
-- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければRHRは作れていません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他開発者さんありがとうございます！！！！
+- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければRHRは作れていません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！そして、マフィアのアイデア元になっています！！！TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他開発者さんありがとうございます！！！！
 
 - [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivate、SyncSetting)、そして、シークレットリーキラーのアイデア元です！！！、[ykundesu](https://github.com/ykundesu)さんや、その他SNR開発者さんありがとうございます！！！
 
@@ -47,7 +47,7 @@
 | [ベイト](#ベイト)           |[トリッカー](#トリッカー)                   |            |
 |                  |[シークレットリーキラー](#シークレットリーキラー)       |    　　　  |
 |                  |[アンダードッグ](#アンダードッグ)             |    　　　  |
-|                  |　　　　　　　　　　　       |    　　　  |
+|                  |[マフィア](#マフィア)　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
@@ -83,4 +83,12 @@
 ### 設定項目
 通常時のキルクール<br>
 最後のインポスターになった時のキルクール
+## マフィア<br>
+陣営 : インポスター<br>
+最後のインポスターになった時にキルが出来るようになります。<br>
+逆に最後のインポスターではない場合キルは出来ません。<br
+置き換え役職 : インポスター<br>
+[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)からの引用役職です。
+### 設定項目
+なし
 ## 第三陣営役職
