@@ -14,60 +14,45 @@ using Object = UnityEngine.Object;
 
 namespace RevolutionaryHostRoles.Patches
 {
-    /*
-    public static class RoleSelectPatch
-    {
-
-        public static CustomRpcSender sender = null;
-
-        public static CustomRpcSender RoleSelect(CustomRpcSender send)
-        {
-            sender = send;
-            RpcSetRole(RoleDatas.Tricker.TrickerPlayer, RoleTypes.Shapeshifter);
-            return sender;
-        }
-        public static void RpcSetRole(List<PlayerControl> player, RoleTypes roleTypes)
-        {
-            foreach (PlayerControl p in player)
-            {
-                sender.RpcSetRole(p, roleTypes);
-            }
-        }
-    }
+   
     [HarmonyPatch(typeof(RoleManager), nameof(RoleManager.SelectRoles))]
     public class SelectRolesPatch
     {
-        public static List<PlayerControl> SelectPlayers = new();
-        public static List<PlayerControl> ImpostorPlayers = new();
-
         public static bool Prefix()
         {
-
+            List<PlayerControl> AllPlayers = new();
+            List<PlayerControl> ImpostorPlayer = new();
             foreach (PlayerControl player in CachedPlayer.AllPlayers)
             {
                 if (!player.Data.Disconnected)
                 {
-                    SelectPlayers.Add(player);
+                    AllPlayers.Add(player);
                 }
             }
-            CustomRpcSender sender = CustomRpcSender.Create("SelectRoles Sender", SendOption.Reliable);
             for (int i = 0; i < PlayerControl.GameOptions.NumImpostors; i++)
             {
-                if (SelectPlayers.Count >= 1)
+                if (AllPlayers.Count != 0)
                 {
-                    var newimpostor = Helpers.SetRandom(SelectPlayers);
-                    ImpostorPlayers.Add(newimpostor);
-                    newimpostor.Data.Role.Role = RoleTypes.Impostor;
-                    newimpostor.Data.Role.TeamType = RoleTeamTypes.Impostor;
-                    SelectPlayers.RemoveAll(a => a.PlayerId == newimpostor.PlayerId);//もし2回同じ人をインポスター選出したらもう一回
+                    var Impostor = Helpers.SetRandom(AllPlayers);
+                    ImpostorPlayer.Add(Impostor);
+                    AllPlayers.RemoveAll(a => a.PlayerId == Impostor.PlayerId);
                 }
-
-            }//インポスター
-            //ロールアサイン
-            RoleSelectPatch.RoleSelect(sender);
+            }
+            foreach (PlayerControl Impostor in ImpostorPlayer)
+            {
+                Impostor.RpcSetRole(RoleTypes.Impostor);
+            }
+            foreach (PlayerControl player in CachedPlayer.AllPlayers)
+            {
+                if (!player.Data.Disconnected)
+                {
+                    if (!player.IsImpostor())
+                    {
+                        player.RpcSetRole(RoleTypes.Crewmate);
+                    }
+                }
+            }
             return false;
         }
-
     }
-*/
 }

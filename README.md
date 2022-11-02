@@ -12,12 +12,13 @@
 [discord](https://discord.gg/KC3G57CWeU)
 
 ## クレジット
-- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければRHRは作れていません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他開発者さんありがとうございます！！！！
+- [TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles) このMODが無ければRHRは作れていません(LoadSpriteFromResourcesやCustomOption、ToByte、RoleAssignment、CustomRpcやそれ以上にソースコードをお借りしています)！！そして、マフィアのアイデア元になっています！！！[TheOtherRolesAU](https://github.com/TheOtherRolesAU)さんや、その他開発者さんありがとうございます！！！！
 
 - [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles) こちらも[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)同様、沢山のソースコードを参考、お借りしています！！！(RpcSetNamePrivate、SyncSetting)、そして、シークレットリーキラーのアイデア元です！！！、[ykundesu](https://github.com/ykundesu)さんや、その他SNR開発者さんありがとうございます！！！
 
 - [TownOfHost](https://github.com/tukasa0001/TownOfHost) LateTaskやCustomRpcSenderをお借りしました！！！[tukasa0001](https://github.com/tukasa0001)さんや、TOHの開発者さんさんありがとうございます！！！
 
+- [TownOfUs](https://github.com/slushiegoose/Town-Of-Us) アンダードッグのアイデア元です！[slushiegoose](https://github.com/slushiegoose)さんや、その他の開発者さんありがとうございます！！
 ## 開発者
 - [山菜](https://github.com/sansai0707)([Twitter](https://twitter.com/sansai_yukkuri))/([YouTube](https://youtube.com/channel/UCj1SxnfqEKlnwXkhCG_VZ7w))
 - [れもんず](https://github.com/remons123)([Twitter](https://twitter.com/abcremons))
@@ -45,8 +46,8 @@
 -------------------|-----------------------------|------------|
 | [ベイト](#ベイト)           |[トリッカー](#トリッカー)                   |            |
 |                  |[シークレットリーキラー](#シークレットリーキラー)       |    　　　  |
-|                  |　　　　　　　　　　　       |    　　　  |
-|                  |　　　　　　　　　　　       |    　　　  |
+|                  |[アンダードッグ](#アンダードッグ)             |    　　　  |
+|                  |[マフィア](#マフィア)　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
 |                  |　　　　　　　　　　　       |    　　　  |
@@ -55,23 +56,39 @@
 
 ## クルーメイト役職<br>
 ## ベイト<br>
-陣営 : クルーメイト
-ベイトがキルされてからn秒後にベイトをキルした人にベイト自身の死体を通報させます。
-置き換え役職 : クルー
-### 設定項目
-キルされてから通報されるまでの時間
+陣営 : クルーメイト<br>
+ベイトがキルされてからn秒後にベイトをキルした人にベイト自身の死体を通報させます。<br>
+置き換え役職 : クルー<br>
+### 設定項目<br>
+キルされてから通報されるまでの時間<br>
 ## インポスター役職<br>
 ## トリッカー<br>
-陣営 : インポスター
-シェイプした後のキルでは死体が出ません。
-置き換え役職 : シェイプシフター
-### 設定項目
-キルクール
+陣営 : インポスター<br>
+シェイプした後のキルでは死体が出ません。<br>
+置き換え役職 : シェイプシフター<br>
+### 設定項目<br>
+キルクール<br>
 ## シークレットリーキラー<br>
-陣営 : インポスター
-キルをしてもキルワープが出ません。
-置き換え役職 : インポスター
-[SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)からの引用役職です。
-### 設定項目
-キルクール
+陣営 : インポスター<br>
+キルをしてもキルワープが出ません。<br>
+置き換え役職 : インポスター<br>
+[SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)からの引用役職です。<br>
+### 設定項目<br>
+キルクール<br>
+## アンダードッグ<br>
+陣営 : インポスター<br>
+最後のインポスターになった時にキルクールがn秒になります<br>
+置き換え役職 : インポスター<br>
+[TownOfUs](https://github.com/slushiegoose/Town-Of-Us)からの引用役職です。<br>
+### 設定項目<br>
+通常時のキルクール<br>
+最後のインポスターになった時のキルクール<br>
+## マフィア<br>
+陣営 : インポスター<br>
+最後のインポスターになった時にキルが出来るようになります。<br>
+逆に最後のインポスターではない場合キルは出来ません。<br>
+置き換え役職 : インポスター<br>
+[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)からの引用役職です。<br>
+### 設定項目<br>
+なし<br>
 ## 第三陣営役職
