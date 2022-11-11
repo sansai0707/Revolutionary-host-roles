@@ -1,4 +1,7 @@
 # coding: shift_jis
+from tkinter import Text
+from turtle import color
+
 
 while True:
      RHR = "RevolutionaryHostRoles\\"
@@ -12,11 +15,11 @@ while True:
      UseVent = input("ベント使用可能か(使用可能な場合記入しなくても大丈夫です、使用不可の場合falseと書いてください) : ")
      UseSabotage = input("サボタージュ使用可能か(使用可能な場合記入しなくても大丈夫です、使用不可の場合falseと書いてください) : ")
 #判断
-     if "no" in UseVent:
+     if "false" in UseVent:
          CanUseVent = False
      else:
          CanUseVent = True
-     if "no" in UseSabotage:
+     if "false" in UseSabotage:
          CanUseSabotage = False
      else:
          CanUseSabotage = True
@@ -54,7 +57,7 @@ while True:
      with open(RHR + "Roles\\RoleOption\\RoleDatas.cs", "r", encoding="utf-8") as RoleDataR:
           RoleDataR2 = RoleDataR.read()
           with open(RHR + "Roles\\RoleOption\\RoleDatas.cs", "w", encoding="utf-8") as RoleDataW:
-               RoleDatatext = RoleDataR2.replace(f"//DataLoadしよう",f"{RoleName}.DataLoad();            //DataLoadしよう")
+               RoleDatatext = RoleDataR2.replace(f"//DataLoadしよう",f"{RoleName}.DataLoad();\n            //DataLoadしよう")
                RoleDataW.write(RoleDatatext)
      #CustomRPC          
      with open(RHR + "Patches\\CustomRPC.cs", "r", encoding="utf-8") as CustomRPCR:
@@ -77,7 +80,7 @@ while True:
      with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "r", encoding="utf-8") as CustomOptionHolderR:
           CustomOptionHolderR2 = CustomOptionHolderR.read()
           with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "w", encoding="utf-8") as CustomOptionHolderW:
-               CustomOptionHoldertext = CustomOptionHolderR2.replace(f"//CustomOptionHolder3です", f"public static CustomOption {RoleName}Option;\n        //CustomOptionHolder3です")
+               CustomOptionHoldertext = CustomOptionHolderR2.replace(f"//CustomOptionHolder3です", f"public static CustomOption {RoleName}Option;\n\n        //CustomOptionHolder3です")
                CustomOptionHolderW.write(CustomOptionHoldertext)
      with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "r", encoding="utf-8") as CustomOptionHoldersR:
           CustomOptionHoldersR2 = CustomOptionHoldersR.read()
@@ -88,7 +91,7 @@ while True:
                elif Team == "インポスター":
                     TeamTexts = "Impostor"
                     TeamText2 = "Impo"
-               CustomOptionHoldertext2 = CustomOptionHoldersR2.replace(f"//CustomOptionHolder2です", f"""{RoleName}Option = CustomOption.Create({TeamText2} + {OptionId}, Types.{TeamTexts}, cs(Color.{Color}, "{JapaneseRoleName}"), rates, null, true);\n            //CustomOptionHolder2です""")
+               CustomOptionHoldertext2 = CustomOptionHoldersR2.replace(f"//CustomOptionHolder2です", f"""{RoleName}Option = CustomOption.Create({TeamText2} + {OptionId}, Types.{TeamTexts}, cs(Color.{Color}, "{JapaneseRoleName}"), rates, null, true);\n\n            //CustomOptionHolder2です""")
                CustomOptionHoldersW.write(CustomOptionHoldertext2)
     #PlayerControlサボタージュ不可役職
      with open(RHR + "Patches\\PlayState\\PlayerControl\\PlayerControl.cs", "r", encoding="utf-8") as PCsR:
@@ -99,14 +102,14 @@ while True:
                else:
                     PCstext = PCsR2.replace(f"//サボhohifhwfhwifhawihgihwpghaiguhargihearigearpihgeaiphgaiuhgbavfhiuhfiwタージュ不可役職", f"case CustomRoleId.{RoleName}\n                //サボタージュ不可役職")
                PCsW.write(PCstext)
-
+               #ベント
      with open(RHR + "Patches\\PlayState\\PlayerControl\\PlayerControl.cs", "r", encoding="utf-8") as PCR:
           PCR2 = PCR.read()
           with open(RHR + "Patches\\PlayState\\PlayerControl\\PlayerControl.cs", "w", encoding="utf-8") as PCW:
                if not CanUseVent:
-                                     PCtext = PCsR2.replace(f"//サボタージュ不可役職", f"case CustomRoleId.{RoleName}:\n                //サボタージュ不可役職")
+                                     PCtext = PCR2.replace(f"//ベント不可役職", f"case CustomRoleId.{RoleName}:\n                //ベント不可役職")
                else:
-                                     PCtext = PCsR2.replace(f"//サボタージfawaweghwjsyeturyhregwfyhrtegsafghtュ不可役職", f"case CustomRoleId.{RoleName}\n                //サボタージュ不可役職")
+                                     PCtext = PCR2.replace(f"//サボタージfawaweghwjsyeturyhregwfyhrtegsafghtュ不可役職", f"case CustomRoleId.{RoleName}\n                //サボタージュ不可役職")
                PCW.write(PCtext)
     #MakeText
      print("作成できたぞおおおおおお！！！")
