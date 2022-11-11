@@ -23,6 +23,7 @@ while True:
           elif Team == "インポスター":
                TeamText = "imp"
           else:
+              print("陣営が「クルー」または「インポスター」ではありません。")
               exit()
 
           with open(RHR + "Patches\\RoleAssignment.cs", "w", encoding="utf-8") as RAW:
@@ -42,25 +43,33 @@ while True:
      with open(RHR + "Patches\\CustomRPC.cs", "r", encoding="utf-8") as CustomRPCR:
           CustomRPCR2 = CustomRPCR.read()
           with open(RHR + "Patches\\CustomRPC.cs", "w", encoding="utf-8") as CustomRPCW:
-               CustomRPCtext = CustomRPCR2.replace("//Roleせっと", f"case CustomRoleId.{RoleName}\n                            RoleDatas.{RoleName}.{RoleName}Player.Add(player);\n                            break;\n                        //Roleせっと")
+               CustomRPCtext = CustomRPCR2.replace("//Roleせっと", f"case CustomRoleId.{RoleName}:\n                            RoleDatas.{RoleName}.{RoleName}Player.Add(player);\n                            break;\n                        //Roleせっと")
                CustomRPCW.write(CustomRPCtext)
      with open(RHR + "Helper.cs", "r", encoding="utf-8") as HelpersR:
           HelpersR2 = HelpersR.read()
           with open(RHR + "Helper.cs", "w", encoding="utf-8") as HelpersW:
                Helperstext = HelpersR2.replace(f"//MODの役職",f"else if (RoleDatas.{RoleName}.{RoleName}Player.IsCheckListPlayerControl(p)) return CustomRoleId.{RoleName};\n            //MODの役職")
-               HelpersNametext = HelpersR2.replace("//RoleNameText", f"""case CustomRoleId.{RoleName}\n                    return Helpers.cs(Color.{Color}, "{JapaneseRoleName} + ");\n                //RoleNameText""")
-               HelpersW.write(HelpersNametext)
                HelpersW.write(Helperstext)
+     with open(RHR + "Helper.cs", "r", encoding="utf-8") as HelperR:
+          HelperR2 = HelperR.read()
+          with open(RHR + "Helper.cs", "w", encoding="utf-8") as HelperW:
+               HelperNametext = HelperR2.replace("//RoleNameText", f"""case CustomRoleId.{RoleName}:\n                    return Helpers.cs(Color.{Color}, "{JapaneseRoleName} + ");\n                //RoleNameText""")
+               HelperW.write(HelperNametext)
+
      with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "r", encoding="utf-8") as CustomOptionHolderR:
           CustomOptionHolderR2 = CustomOptionHolderR.read()
           with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "w", encoding="utf-8") as CustomOptionHolderW:
+               CustomOptionHoldertext = CustomOptionHolderR2.replace(f"//CustomOptionHolder3です", f"public static CustomOption {RoleName}Option;\n        //CustomOptionHolder3です")
+               CustomOptionHolderW.write(CustomOptionHoldertext)
+     with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "r", encoding="utf-8") as CustomOptionHoldersR:
+          CustomOptionHoldersR2 = CustomOptionHoldersR.read()
+          with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "w", encoding="utf-8") as CustomOptionHoldersW:
                if Team == "クルー":
                   TeamTexts = "Crewmate"
                   TeamText2 = "Crew"
                elif Team == "インポスター":
                     TeamTexts = "Impostor"
                     TeamText2 = "Impo"
-               CustomOptionHoldertext = CustomOptionHolderR2.replace(f"//CustomOptionHolderです", f"public static CustomOption {RoleName}Option;\n        //CustomOptionHolderです")
-               CustomOptionHoldertext2 = CustomOptionHolderR2.replace(f"//CustomOptionHolder2です", f"""{RoleName}Option = CustomOption.{TeamText2} + {OptionId} Types.{TeamTexts} cs(Color.{Color}, {JapaneseRoleName} rates, null, true);\n            //CustomOptionHolder2です""")
-               CustomOptionHolderW.write(CustomOptionHoldertext)
-               CustomOptionHolderW.write(CustomOptionHoldertext2)
+               CustomOptionHoldertext2 = CustomOptionHoldersR2.replace(f"//CustomOptionHolder2です", f"""{RoleName}Option = CustomOption.Create({TeamText2} + {OptionId}, Types.{TeamTexts}, cs(Color.{Color}, "{JapaneseRoleName}"), rates, null, true);\n            //CustomOptionHolder2です""")
+               CustomOptionHoldersW.write(CustomOptionHoldertext2)
+     print("作成できたぞおおおおおお！！！")

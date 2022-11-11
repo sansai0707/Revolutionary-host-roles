@@ -50,7 +50,7 @@ namespace RevolutionaryHostRoles
         public static CustomOption BaitReportTime;
         //なんでも
 
-        //CustomOptionHolderです
+        //CustomOptionHolder3です
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
 
