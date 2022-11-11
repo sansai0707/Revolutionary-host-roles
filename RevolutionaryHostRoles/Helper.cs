@@ -136,6 +136,8 @@ namespace RevolutionaryHostRoles
             else if (RoleDatas.SecretlyKiller.SecretlyKillerPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.SecretlyKiller;
             else if (RoleDatas.UnderDog.UnderDogPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.UnderDog;
             else if (RoleDatas.Mafia.MafiaPlayer.IsCheckListPlayerControl(p)) return CustomRoleId.Mafia;
+
+            //MODの役職
             else return CustomRoleId.NormalRoles;
         }
         public static bool IsCheckListPlayerControl(this List<PlayerControl> ListDate, PlayerControl CheckPlayer)
@@ -180,7 +182,8 @@ namespace RevolutionaryHostRoles
                 case CustomRoleId.UnderDog:
                     return "<color=red>アンダードッグ</color>";
                 case CustomRoleId.Mafia:
-                    return "<color=red>マフィア</color>";
+                    return Helpers.cs(Color.red, "マフィア");
+                //RoleNameText
                 default:
                     switch (p.Data.RoleType)
                     {

@@ -19,6 +19,9 @@ namespace RevolutionaryHostRoles
         UnderDog,
         Mafia,
         //クルー役職
-        Bait
+        Bait,
+        //Python作成
+
+        //なんでも役職
     }
 }
