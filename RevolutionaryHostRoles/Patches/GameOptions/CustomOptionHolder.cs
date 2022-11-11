@@ -48,9 +48,9 @@ namespace RevolutionaryHostRoles
         //クルー
         public static CustomOption BaitOption;
         public static CustomOption BaitReportTime;
+        //なんでも
 
-
-
+        //CustomOptionHolderです
 
         internal static Dictionary<byte, byte[]> blockedRolePairings = new Dictionary<byte, byte[]>();
 
@@ -87,6 +87,9 @@ namespace RevolutionaryHostRoles
             BaitOption = CustomOption.Create(Crew, Types.Crewmate, cs(RoleDatas.Bait.color, "ベイト"), rates, null, true);
             BaitReportTime = CustomOption.Create(Crew + 1, Types.Crewmate, "通報までの時間", 3f, 0f, 10f, 1f, BaitOption);
 
+            //なんでも
+
+            //CustomOptionHolder2です
 
             //テンプレ
             //temple(Role) = CustomOption.Create(Id, Types.Impostor, cs(Color.red, "トラッカー"), rates, null, true);
