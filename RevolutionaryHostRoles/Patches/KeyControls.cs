@@ -23,7 +23,7 @@ namespace RevolutionaryHostRoles.Patches
                 if (!AmongUsClient.Instance.AmHost) return;
                 if (StartPatch.BeginStart.IsStart)
                 {
-                    ShipStatus.RpcEndGame(GameOverReason.HumansByTask, false);
+                    GameManager.Instance.RpcEndGame(GameOverReason.HumansByTask, false);
                 }
             }
         }

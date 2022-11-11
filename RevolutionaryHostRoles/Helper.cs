@@ -187,15 +187,15 @@ namespace RevolutionaryHostRoles
                 default:
                     switch (p.Data.RoleType)
                     {
-                        case RoleTypes.Crewmate:
+                        case AmongUs.GameOptions.RoleTypes.Crewmate:
                             return "<color=#00FFFF>クルーメイト</color>";
-                        case RoleTypes.Engineer:
+                        case AmongUs.GameOptions.RoleTypes.Engineer:
                             return "<color=#1e90ff>エンジニア</color>";
-                        case RoleTypes.Scientist:
+                        case AmongUs.GameOptions.RoleTypes.Scientist:
                             return "<color=#7fff00>科学者</color>";
-                        case RoleTypes.Impostor:
+                        case AmongUs.GameOptions.RoleTypes.Impostor:
                             return "<color=#FF0000>インポスター</color>";
-                        case RoleTypes.Shapeshifter:
+                        case AmongUs.GameOptions.RoleTypes.Shapeshifter:
                             return "<color=#FF0000>シェイプシフター</color>";
                         default: return "<color=#ffff00>守護天使</color>";
                     }
@@ -218,9 +218,9 @@ namespace RevolutionaryHostRoles
             if (TargetPlayer == null || NewName == null || !AmongUsClient.Instance.AmHost) return;
             if (SeePlayer == null) SeePlayer = TargetPlayer;
             var clientId = SeePlayer.GetClientId();
-            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(TargetPlayer.NetId, (byte)RpcCalls.SetName, SendOption.Reliable, clientId);
-            writer.Write(NewName);
-            AmongUsClient.Instance.FinishRpcImmediately(writer);
+                MessageWriter writers = AmongUsClient.Instance.StartRpcImmediately(TargetPlayer.NetId, (byte)RpcCalls.SetName, SendOption.Reliable, -1);
+                writers.Write(NewName);
+                AmongUsClient.Instance.FinishRpcImmediately(writers);
         }
         /*=====================ykundesuさんありがとうございます！！！=========================*/
         public static void RpcMurderPrivate(this PlayerControl TargetPlayer,PlayerControl SeePlayer = null)

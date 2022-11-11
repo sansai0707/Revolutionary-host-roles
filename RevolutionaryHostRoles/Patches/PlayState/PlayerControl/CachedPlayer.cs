@@ -36,34 +36,6 @@ public class CachedPlayer
 [HarmonyPatch]
 public static class CachedPlayerPatches
 {
-    [HarmonyPatch]
-    private class CacheLocalPlayerPatch
-    {
-        [HarmonyTargetMethod]
-        public static MethodBase TargetMethod()
-        {
-            var type = typeof(PlayerControl).GetNestedTypes(AccessTools.all).FirstOrDefault(t => t.Name.Contains("Start"));
-            return AccessTools.Method(type, nameof(IEnumerator.MoveNext));
-        }
-
-        [HarmonyPostfix]
-        public static void SetLocalPlayer()
-        {
-            var localPlayer = PlayerControl.LocalPlayer;
-            if (!localPlayer)
-            {
-                CachedPlayer.LocalPlayer = null;
-                return;
-            }
-
-            var cached = CachedPlayer.AllPlayers.FirstOrDefault(p => p.PlayerControl.Pointer == localPlayer.Pointer);
-            if (cached != null)
-            {
-                CachedPlayer.LocalPlayer = cached;
-                return;
-            }
-        }
-    }
 
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Awake))]
     [HarmonyPostfix]

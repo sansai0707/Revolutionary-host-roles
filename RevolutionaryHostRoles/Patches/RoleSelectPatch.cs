@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using AmongUs.GameOptions;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.IL2CPP;
 using Epic.OnlineServices.TitleStorage;
@@ -29,7 +30,7 @@ namespace RevolutionaryHostRoles.Patches
                     AllPlayers.Add(player);
                 }
             }
-            for (int i = 0; i < PlayerControl.GameOptions.NumImpostors; i++)
+            for (int i = 0; i < GameOptionsManager.Instance.CurrentGameOptions.NumImpostors; i++)
             {
                 if (AllPlayers.Count != 0)
                 {

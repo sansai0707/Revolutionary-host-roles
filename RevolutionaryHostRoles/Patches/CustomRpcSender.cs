@@ -252,7 +252,7 @@ namespace RevolutionaryHostRoles
 
     public static class CustomRpcSenderExtensions
     {
-        public static void RpcSetRole(this CustomRpcSender sender, PlayerControl player, RoleTypes role, int targetClientId = -1)
+        public static void RpcSetRole(this CustomRpcSender sender, PlayerControl player, AmongUs.GameOptions.RoleTypes role, int targetClientId = -1)
         {
             sender.AutoStartRpc(player.NetId, (byte)RpcCalls.SetRole, targetClientId)
                 .Write((ushort)role)
