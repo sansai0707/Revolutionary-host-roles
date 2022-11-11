@@ -21,7 +21,7 @@ namespace RevolutionaryHostRoles
         //クルー役職
         Bait,
         //Python作成
-
+        Temple,
         //なんでも役職
     }
 }

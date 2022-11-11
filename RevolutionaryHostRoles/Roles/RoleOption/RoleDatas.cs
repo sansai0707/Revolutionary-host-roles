@@ -16,6 +16,7 @@ namespace RevolutionaryHostRoles.Roles
             SecretlyKiller.DataLoad();
             UnderDog.DataLoad();
             Mafia.DataLoad();
+            //DataLoadしよう
         }
         public static class Tricker
         {

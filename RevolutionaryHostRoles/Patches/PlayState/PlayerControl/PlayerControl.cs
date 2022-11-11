@@ -9,6 +9,7 @@ using RevolutionaryHostRoles.Roles;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Bindings;
+using UnityEngine.EventSystems;
 using UnityEngine.Networking.Types;
 using UnityEngine.PlayerLoop;
 using static UnityEngine.UI.Button;
@@ -32,6 +33,42 @@ namespace RevolutionaryHostRoles.Patches
         public static void Postfix(PlayerControl __instance)
         {
 
+        }
+    }
+    [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.RepairSystem))]
+    class RepairSystemPatch
+    {
+        public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] SystemTypes systemType, [HarmonyArgument(1)] PlayerControl player, [HarmonyArgument(2)] byte amount)
+        {
+            switch (player.GetRole())
+            {
+                case CustomRoleId.Temple:
+                //サボタージュ不可役職
+                return false;
+            }
+            return true;
+        }
+    }
+    [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.CoEnterVent))]
+    class CoEnterVentPatch
+    {
+        public static bool Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] int ventid)
+        {
+
+            switch (__instance.myPlayer.GetRole())
+            {
+                case CustomRoleId.Temple:
+                //ベント不可役職
+                    new LateTask(() =>
+                    {
+                        MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(__instance.NetId, (byte)RpcCalls.BootFromVent, SendOption.Reliable, __instance.myPlayer.GetClientId());
+                        writer2.Write(ventid);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                        __instance.myPlayer.inVent = false;
+                    }, 0.1f, "Anti Vent");
+                    return false;
+            }
+            return true;
         }
     }
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckMurder))]//キルしようとした時
