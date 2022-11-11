@@ -61,11 +61,17 @@ namespace RevolutionaryHostRoles.Patches
                 //ベント不可役職
                     new LateTask(() =>
                     {
-                        MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(__instance.NetId, (byte)RpcCalls.BootFromVent, SendOption.Reliable, __instance.myPlayer.GetClientId());
-                        writer2.Write(ventid);
-                        AmongUsClient.Instance.FinishRpcImmediately(writer2);
-                        __instance.myPlayer.inVent = false;
+                        foreach (PlayerControl p in CachedPlayer.AllPlayers)
+                        {
+                            MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(__instance.NetId, (byte)RpcCalls.BootFromVent, SendOption.Reliable, p.GetClientId());
+
+                            writer2.Write(ventid);
+                            AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                            __instance.myPlayer.inVent = false;
+                        }
                     }, 0.1f, "Anti Vent");
+
+
                     return false;
             }
             return true;
