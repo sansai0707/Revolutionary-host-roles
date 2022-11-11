@@ -76,6 +76,7 @@ namespace RevolutionaryHostRoles
                         case CustomRoleId.Mafia:
                             RoleDatas.Mafia.MafiaPlayer.Add(player);
                             break;
+                        //Roleせっと
                     }
                 }
         }

@@ -67,12 +67,13 @@ namespace RevolutionaryHostRoles.Roles
         }
         public static class Mafia
         {
-            public static Color color = new Color32(255, 255, 0, byte.MaxValue);
+            public static Color color = Color.red;
             public static List<PlayerControl> MafiaPlayer;
             public static void DataLoad()
             {
                 MafiaPlayer = new();
             }
         }
+//RoleDatas
     }
 }

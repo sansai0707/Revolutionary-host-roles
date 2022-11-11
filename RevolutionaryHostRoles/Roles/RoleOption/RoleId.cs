@@ -20,5 +20,8 @@ namespace RevolutionaryHostRoles
         Mafia,
         //クルー役職
         Bait
+        //Python作成
+
+        //なんでも役職
     }
 }
