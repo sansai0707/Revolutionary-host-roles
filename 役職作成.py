@@ -35,16 +35,19 @@ while True:
           with open(RHR + "Roles\\RoleOption\\RoleId.cs", "w", encoding="utf-8") as RoleIdW:
                RoleIdtext = RoleIdR2.replace(f"//Ç»ÇÒÇ≈Ç‡ñêE", f"""{RoleName},\n        //Ç»ÇÒÇ≈Ç‡ñêE""")
                RoleIdW.write(RoleIdtext)
+    #RoleDatas
      with open(RHR + "Roles\\RoleOption\\RoleDatas.cs", "r", encoding="utf-8") as RoleDatasR:
           RoleDatasR2 = RoleDatasR.read()
           with open(RHR + "Roles\\RoleOption\\RoleDatas.cs", "w", encoding="utf-8") as RoleDatasW:
                RoleDatastext = RoleDatasR2.replace(f"//RoleDatas", "        public static class {RoleName}\n         {\n            public static Color color = Color.{playercolor};\n            public static List<PlayerControl> {RoleName}Player;\n            public static void DataLoad()\n            {\n                {RoleName}Player = new();\n            }\n        }\n//RoleDatas").replace("{RoleName}", RoleName).replace("{playercolor}", Color)
                RoleDatasW.write(RoleDatastext)
+     #CustomRPC          
      with open(RHR + "Patches\\CustomRPC.cs", "r", encoding="utf-8") as CustomRPCR:
           CustomRPCR2 = CustomRPCR.read()
           with open(RHR + "Patches\\CustomRPC.cs", "w", encoding="utf-8") as CustomRPCW:
                CustomRPCtext = CustomRPCR2.replace("//RoleÇπÇ¡Ç∆", f"case CustomRoleId.{RoleName}:\n                            RoleDatas.{RoleName}.{RoleName}Player.Add(player);\n                            break;\n                        //RoleÇπÇ¡Ç∆")
                CustomRPCW.write(CustomRPCtext)
+    #Helper
      with open(RHR + "Helper.cs", "r", encoding="utf-8") as HelpersR:
           HelpersR2 = HelpersR.read()
           with open(RHR + "Helper.cs", "w", encoding="utf-8") as HelpersW:
@@ -55,7 +58,7 @@ while True:
           with open(RHR + "Helper.cs", "w", encoding="utf-8") as HelperW:
                HelperNametext = HelperR2.replace("//RoleNameText", f"""case CustomRoleId.{RoleName}:\n                    return Helpers.cs(Color.{Color}, "{JapaneseRoleName} + ");\n                //RoleNameText""")
                HelperW.write(HelperNametext)
-
+     #CustomOption
      with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "r", encoding="utf-8") as CustomOptionHolderR:
           CustomOptionHolderR2 = CustomOptionHolderR.read()
           with open(RHR + "Patches\\GameOptions\\CustomOptionHolder.cs", "w", encoding="utf-8") as CustomOptionHolderW:
@@ -72,4 +75,5 @@ while True:
                     TeamText2 = "Impo"
                CustomOptionHoldertext2 = CustomOptionHoldersR2.replace(f"//CustomOptionHolder2Ç≈Ç∑", f"""{RoleName}Option = CustomOption.Create({TeamText2} + {OptionId}, Types.{TeamTexts}, cs(Color.{Color}, "{JapaneseRoleName}"), rates, null, true);\n            //CustomOptionHolder2Ç≈Ç∑""")
                CustomOptionHoldersW.write(CustomOptionHoldertext2)
+    #MakeText
      print("çÏê¨Ç≈Ç´ÇΩÇºÇ®Ç®Ç®Ç®Ç®Ç®ÅIÅIÅI")
