@@ -24,7 +24,6 @@ namespace RevolutionaryHostRoles.Patches
 
             }
 
-
             [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
             public static class BeginEnd
             {

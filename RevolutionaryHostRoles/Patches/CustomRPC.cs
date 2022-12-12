@@ -85,7 +85,7 @@ namespace RevolutionaryHostRoles
         {
             var player = Helpers.playerById(playerId);
             player.roleAssigned = false;
-            DestroyableSingleton<RoleManager>.Instance.SetRole(player, (RoleTypes)roleType);
+            DestroyableSingleton<RoleManager>.Instance.SetRole(player, (AmongUs.GameOptions.RoleTypes)roleType);
         }
 
         public static void workaroundSetRoles(byte numberOfRoles, MessageReader reader)
@@ -126,10 +126,7 @@ namespace RevolutionaryHostRoles
                 MessageReader subReader = MessageReader.Get(reader);
                 switch (rpcType)
                 {
-                    case RpcCalls.SnapTo:
-                        Vector2 position = __instance.ReadVector2(subReader);
-                        ushort minSid = subReader.ReadUInt16();
-                        break;
+
                 }
                 return true;
             }
